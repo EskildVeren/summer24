@@ -6,16 +6,16 @@ function MainPage() {
   return (
     <div className="mainPageContainer">
       <div className="introContainer mainPageTextContainers">
-        <h1>Lorem ipsum!</h1>
+        <h1>Velkommen til nettsiden min!</h1>
         <p>
-          HLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue
-          condimentum lacus, at dapibus felis euismod at. Morbi bibendum posuere
-          elit, auctor pulvinar lorem blandit ut. Aenean ullamcorper ultrices
-          lectus, quis eleifend nulla maximus eget. Curabitur consequat mi ac
-          ante elementum, sed sodales quam lacinia. Praesent volutpat augue vel
-          arcu placerat lobortis. Sed congue ante non finibus lacinia. In hac
-          habitasse platea dictumst. Ut ultricies rutrum feugiat. Aliquam in
-          massa lobortis, bibendum ex ut, placerat.{" "}
+          Heihei, mitt navn er Eskild. eg er en greit høy kar som kommer fra et
+          koselig lite sted som heter Prinsdal. Under oppveksten fikk jeg en
+          stor interesse i dataspill og matte, noe som naturligvis førte til en
+          interesse i programmering. Nå er jeg en rykende fersk student på jakt
+          etter jobb. Er du min nye arbeidsgiver? Om du er det eller ei kan du
+          vel uansett ta deg en titt rundt. På denne nettsiden finner du både
+          CV-en min og en liten matblogg. Bare å ta et par pastaoppskrifter når
+          du ført er innom!
         </p>
       </div>
       <Link to="resume" className="cvButton mainPageTextContainers button">

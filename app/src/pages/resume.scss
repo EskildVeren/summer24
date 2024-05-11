@@ -1,0 +1,31 @@
+$background: #566246;
+$color1: #7f5a83;
+$color2: #a8ba9a;
+$color3: #a5b394;
+$text: #1a090d;
+
+.resumeContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: $color3;
+  min-height: 100vh;
+  width: 60%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.resumeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.experienceTitlecontainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}

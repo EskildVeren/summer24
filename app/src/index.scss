@@ -1,8 +1,8 @@
-$background: #590f6c;
-$darkPink: #eb4b98;
-$lightPink: #f26df9;
-$orange: #e77728;
-$white: #ffffff;
+$background: #566246;
+$color1: #7f5a83;
+$color2: #879970;
+$color3: #a5b394;
+$text: #1a090d;
 
 body {
   margin: 0;
@@ -13,9 +13,10 @@ body {
   height: 100vh;
 
   background-color: $background;
-  color: $white;
+  color: $text;
   font-family: Sanchez;
   font-size: large;
+  letter-spacing: 0.1em;
 }
 
 #root {
@@ -43,7 +44,7 @@ a {
   text-decoration: inherit;
 }
 .button {
-  transition: 0.1s ease-out;
+  transition: 0.3s ease-out;
 }
 .button:hover {
   cursor: pointer;
@@ -62,9 +63,11 @@ a {
 }
 
 .returnToMainPage {
-  background-color: $orange;
+  background-color: $color2;
   padding: 1em;
+  width: 15%;
   display: flex;
   position: absolute;
-  left: 4em;
+  left: 0em;
+  top: 0;
 }

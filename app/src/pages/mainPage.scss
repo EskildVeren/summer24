@@ -1,14 +1,14 @@
-$background: #590f6c;
-$darkPink: #eb4b98;
-$lightPink: #f26df9;
-$orange: #e77728;
-$white: #ffffff;
+$background: #566246;
+$color1: #7f5a83;
+$color2: #a8ba9a;
+$color3: #a5b394;
+$text: #1a090d;
 
 .introContainer {
-  background-color: $darkPink;
+  background-color: $color3;
   flex-grow: 1;
-  padding-left: 2em;
-  padding-top: 2em;
+  text-align: justify;
+  transition: 0.3s ease-out;
 }
 .lowerContainer {
   flex-grow: 2;
@@ -16,12 +16,12 @@ $white: #ffffff;
   gap: 2em;
 }
 .cvButton {
-  background-color: $orange;
+  background-color: $color3;
   flex-grow: 1;
 }
 
 .blogButton {
-  background-color: $lightPink;
+  background-color: $color3;
   flex-grow: 1;
 }
 
@@ -39,8 +39,9 @@ $white: #ffffff;
 
 .mainPageContainer {
   width: 80%;
-  height: 80vh;
-  margin-top: 2em;
+  max-height: 100vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
