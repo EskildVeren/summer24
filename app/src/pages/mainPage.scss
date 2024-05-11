@@ -1,0 +1,45 @@
+$background: #590f6c;
+$darkPink: #eb4b98;
+$lightPink: #f26df9;
+$orange: #e77728;
+$white: #ffffff;
+
+.introContainer {
+  background-color: $darkPink;
+  flex-grow: 2;
+  padding-left: 2em;
+  padding-top: 2em;
+}
+.lowerContainer {
+  flex-grow: 2;
+  display: flex;
+  gap: 2em;
+}
+.cvButton {
+  background-color: $orange;
+  flex-grow: 1;
+}
+
+.blogButton {
+  background-color: $lightPink;
+  flex-grow: 2;
+}
+
+.mainPageContainer {
+  width: 80%;
+  height: 80vh;
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.mainPageTextContainers {
+  padding-left: 2em;
+  padding-top: 2em;
+}
+
+.mainPageTextContainers:hover {
+  flex-grow: 3;
+}

@@ -1,0 +1,39 @@
+$background: #590f6c;
+$darkPink: #eb4b98;
+$lightPink: #f26df9;
+$orange: #e77728;
+$white: #ffffff;
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $background;
+  color: $white;
+  font-family: Sanchez;
+  font-size: xx-large;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.sanchez-regular {
+  font-family: "Sanchez", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sanchez-regular-italic {
+  font-family: "Sanchez", serif;
+  font-weight: 400;
+  font-style: italic;
+}
