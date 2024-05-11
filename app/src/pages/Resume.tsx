@@ -1,7 +1,20 @@
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 import "./resume.scss";
 
+type workExperience = {
+  title: string;
+  timePeriod: string;
+  employer: string;
+  description: string;
+};
+
+type resumeSectionData = {
+  sectionName: string;
+  experiencePoints: workExperience[];
+};
+
 function Resume() {
+  const resumeData = getWorkExperience();
   return (
     <>
       <ReturnToMainPageButton />
@@ -16,23 +29,56 @@ function Resume() {
             på jakt etter jobb. Er du min nye arbeidsgiver?
           </p>
         </div>
-        <div className="resumeSection">
-          <h2>Arbeidserfaring</h2>
-          <div className="experiencePoint">
-            <div className="experienceTitlecontainer">
-              <p>Assistent til lærer</p>
-              <p>Sommerferien 2021 og 2022</p>
+        {resumeData.map((resumeSection) => {
+          return (
+            <div className="resumeSection">
+              <h2>{resumeSection.sectionName}</h2>
+              {resumeSection.experiencePoints.map(
+                (experiencePoint: workExperience) => {
+                  return (
+                    <div className="experiencePoint">
+                      <div className="experienceTitlecontainer">
+                        <p>{experiencePoint.title}</p>
+                        <p>{experiencePoint.timePeriod}</p>
+                      </div>
+                      <p>
+                        {experiencePoint.employer},{" "}
+                        {experiencePoint.description}
+                      </p>
+                    </div>
+                  );
+                }
+              )}
             </div>
-            <p>
-              Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i
-              scratch
-            </p>
-          </div>
-        </div>
-        <div className="resumeSection"></div>
+          );
+        })}
       </div>
     </>
   );
 }
 
 export default Resume;
+
+const getWorkExperience = (): resumeSectionData[] => {
+  return [
+    {
+      sectionName: "Arbeidserfaring",
+      experiencePoints: [
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerferien 2021 og 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerferien 2021 og 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+      ],
+    },
+  ];
+};
