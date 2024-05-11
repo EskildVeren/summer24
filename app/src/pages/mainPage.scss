@@ -6,7 +6,7 @@ $white: #ffffff;
 
 .introContainer {
   background-color: $darkPink;
-  flex-grow: 2;
+  flex-grow: 1;
   padding-left: 2em;
   padding-top: 2em;
 }
@@ -22,7 +22,7 @@ $white: #ffffff;
 
 .blogButton {
   background-color: $lightPink;
-  flex-grow: 2;
+  flex-grow: 1;
 }
 
 .mainPageContainer {
@@ -32,14 +32,13 @@ $white: #ffffff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 2em;
+  gap: 1em;
 }
 
 .mainPageTextContainers {
   padding-left: 2em;
   padding-top: 2em;
 }
-
-.mainPageTextContainers:hover {
-  flex-grow: 3;
+.button {
+  cursor: pointer;
 }
