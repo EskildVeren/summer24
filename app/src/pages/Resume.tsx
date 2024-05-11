@@ -1,7 +1,6 @@
-import React from "react";
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 
-function Blog() {
+function Resume() {
   return (
     <>
       <ReturnToMainPageButton />
@@ -10,4 +9,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default Resume;

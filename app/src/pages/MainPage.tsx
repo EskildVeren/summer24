@@ -1,5 +1,6 @@
 import React from "react";
 import "./mainPage.scss";
+import { Link } from "react-router-dom";
 
 function MainPage() {
   return (
@@ -17,12 +18,12 @@ function MainPage() {
           massa lobortis, bibendum ex ut, placerat.{" "}
         </p>
       </div>
-      <div className="cvButton mainPageTextContainers button">
+      <Link to="resume" className="cvButton mainPageTextContainers button">
         <h2>Trykk for å se min cv</h2>
-      </div>
-      <div className="blogButton mainPageTextContainers button">
+      </Link>
+      <Link to="blog" className="blogButton mainPageTextContainers button">
         <h2>Les bloggen min her</h2>
-      </div>
+      </Link>
     </div>
   );
 }

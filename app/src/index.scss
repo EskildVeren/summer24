@@ -37,3 +37,34 @@ body {
   font-weight: 400;
   font-style: italic;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.button {
+  transition: 0.1s ease-out;
+}
+.button:hover {
+  cursor: pointer;
+  flex-grow: 2;
+  animation: hoverFlexGrow 0.5s;
+  animation: hoverFlexGrow 0.5s ease-out;
+}
+
+@keyframes hoverFlexGrow {
+  from {
+    flex-grow: 1;
+  }
+  to {
+    flex-grow: 2;
+  }
+}
+
+.returnToMainPage {
+  background-color: $orange;
+  padding: 1em;
+  display: flex;
+  position: absolute;
+  left: 4em;
+}

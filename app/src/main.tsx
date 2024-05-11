@@ -1,17 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.scss";
-import Blog from "./pages/blog.tsx";
+import Blog from "./pages/Blog.tsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage.tsx";
+import MainPage from "./pages/MainPage.tsx";
+import Resume from "./pages/Resume.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainPage />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "profile",
+    path: "blog",
     element: <Blog />,
+  },
+  {
+    path: "resume",
+    element: <Resume />,
   },
 ]);
 

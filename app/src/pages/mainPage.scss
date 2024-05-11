@@ -25,6 +25,18 @@ $white: #ffffff;
   flex-grow: 1;
 }
 
+.blogButton,
+.cvButton {
+  flex-grow: 1;
+}
+
+.blogButton:hover,
+.cvButton:hover {
+  flex-grow: 2;
+  animation: hoverFlexGrow 0.5s;
+  animation: hoverFlexGrow 0.5s ease-out;
+}
+
 .mainPageContainer {
   width: 80%;
   height: 80vh;
@@ -39,6 +51,12 @@ $white: #ffffff;
   padding-left: 2em;
   padding-top: 2em;
 }
-.button {
-  cursor: pointer;
+
+@keyframes hoverFlexGrow {
+  from {
+    flex-grow: 1;
+  }
+  to {
+    flex-grow: 2;
+  }
 }
