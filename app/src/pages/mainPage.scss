@@ -1,11 +1,7 @@
-$background: #835a97;
-$color1: #c7558d;
-$color2: #f65d66;
-$color3: #ff8427;
-$text: #2f4858;
+@use "../utilities/colors.scss";
 
 .introContainer {
-  background-color: $color3;
+  background-color: colors.$accent1;
   flex-grow: 1;
   text-align: justify;
   transition: 0.3s ease-out;
@@ -16,12 +12,12 @@ $text: #2f4858;
   gap: 2em;
 }
 .cvButton {
-  background-color: $color3;
+  background-color: colors.$accent1;
   flex-grow: 1;
 }
 
 .blogButton {
-  background-color: $color3;
+  background-color: colors.$accent1;
   flex-grow: 1;
 }
 
