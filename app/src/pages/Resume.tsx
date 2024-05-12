@@ -1,5 +1,6 @@
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 import "./resume.scss";
+import eskild from "../assets/Eskild_er_meg.jpg";
 
 type workExperience = {
   title: string;
@@ -21,13 +22,16 @@ function Resume() {
       <div className="resumeContainer">
         <div className="resumeSection">
           <h1>Her er CV-en min!</h1>
-          <p>
-            Heihei, mitt navn er Eskild. eg er en greit høy kar som kommer fra
-            et koselig lite sted som heter Prinsdal. Under oppveksten fikk jeg
-            en stor interesse i dataspill og matte, noe som naturligvis førte
-            til en interesse i programmering. Nå er jeg en rykende fersk student
-            på jakt etter jobb. Er du min nye arbeidsgiver?
-          </p>
+          <div className="introduction">
+            <p>
+              Heihei, mitt navn er Eskild. eg er en greit høy kar som kommer fra
+              et koselig lite sted som heter Prinsdal. Under oppveksten fikk jeg
+              en stor interesse i dataspill og matte, noe som naturligvis førte
+              til en interesse i programmering. Nå er jeg en rykende fersk
+              student på jakt etter jobb. Er du min nye arbeidsgiver?
+            </p>
+            <img src={eskild} />
+          </div>
         </div>
         {resumeData.map((resumeSection) => {
           return (
@@ -66,14 +70,49 @@ const getWorkExperience = (): resumeSectionData[] => {
       experiencePoints: [
         {
           title: "Sommerskolen Oslo",
-          timePeriod: "Sommerferien 2021 og 2022",
+          timePeriod: "Sommerene 2021, 2022",
           employer: "Sommerskolen Oslo",
           description:
             "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
         },
         {
           title: "Sommerskolen Oslo",
-          timePeriod: "Sommerferien 2021 og 2022",
+          timePeriod: "Sommerene 2021, 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerene 2021, 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerene 2021, 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerene 2021, 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerene 2021, 2022",
+          employer: "Sommerskolen Oslo",
+          description:
+            "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
+        },
+        {
+          title: "Sommerskolen Oslo",
+          timePeriod: "Sommerene 2021, 2022",
           employer: "Sommerskolen Oslo",
           description:
             "Sommerskolen Oslo, assistent i kurs som lærer opp ulike grupper i scratch",
