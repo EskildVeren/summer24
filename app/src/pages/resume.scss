@@ -6,6 +6,7 @@ img {
   overflow: hidden;
   display: block;
   max-width: 40%;
+  max-height: 20em;
 }
 .introduction {
   display: flex;
@@ -13,6 +14,7 @@ img {
   justify-content: space-between;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 5em;
   gap: 10em;
   p {
     width: 60%;
@@ -25,8 +27,8 @@ img {
 
 h1 {
   text-align: center;
-  margin-bottom: 1em;
   width: 100%;
+  margin-top: 2em;
 }
 
 h2 {
