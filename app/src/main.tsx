@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage.tsx";
 import MainPage from "./pages/MainPage.tsx";
 import Resume from "./pages/Resume.tsx";
+import BlogArticlePage from "./pages/BlogArticlePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "resume",
     element: <Resume />,
+  },
+  {
+    path: "blog/:articleTitle",
+    element: <BlogArticlePage />,
   },
 ]);
 

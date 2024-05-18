@@ -1,10 +1,14 @@
 import React from "react";
+import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 
 function ErrorPage() {
   return (
-    <div>
-      <p>Oida, her gikk noe galt</p>
-    </div>
+    <>
+      <ReturnToMainPageButton />
+      <div className="pageContainer">
+        <p>Oida, her gikk noe galt</p>
+      </div>
+    </>
   );
 }
 
