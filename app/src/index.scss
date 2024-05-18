@@ -17,6 +17,7 @@ body {
 
 #root {
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -39,23 +40,9 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
-.button {
-  transition: 0.3s ease-out;
-}
+
 .button:hover {
   cursor: pointer;
-  flex-grow: 2;
-  animation: hoverFlexGrow 0.5s;
-  animation: hoverFlexGrow 0.5s ease-out;
-}
-
-@keyframes hoverFlexGrow {
-  from {
-    flex-grow: 1;
-  }
-  to {
-    flex-grow: 2;
-  }
 }
 
 .returnToMainPage {
@@ -63,7 +50,39 @@ a {
   padding: 1em;
   width: 15%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 0em;
   top: 0;
+}
+
+.pageSection {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  column-gap: 5em;
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: colors.$accent1;
+  min-height: 100vh;
+  height: 100%;
+  width: 80%;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 4em;
+  /*
+  p {
+    text-align: justify;
+    font-size: 14px;
+    letter-spacing: normal;
+  }
+  gap: 3em;
+  */
 }

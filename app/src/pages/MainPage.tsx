@@ -18,10 +18,13 @@ function MainPage() {
           du ført er innom!
         </p>
       </div>
-      <Link to="resume" className="cvButton mainPageTextContainers button">
+      <Link
+        to="resume"
+        className="mainPageButton mainPageTextContainers button"
+      >
         <h2>Trykk for å se min cv</h2>
       </Link>
-      <Link to="blog" className="blogButton mainPageTextContainers button">
+      <Link to="blog" className="mainPageButton mainPageTextContainers button">
         <h2>Les bloggen min her</h2>
       </Link>
     </div>

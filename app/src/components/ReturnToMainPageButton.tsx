@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function ReturnToMainPageButton() {
   return (
     <Link to={"/"} className="returnToMainPage button">
-      {"Return to main page"}
+      Tilbake til forsiden
     </Link>
   );
 }

@@ -19,9 +19,9 @@ function Resume() {
   return (
     <>
       <ReturnToMainPageButton />
-      <div className="resumeContainer">
-        <div className="resumeSection">
-          <h1>Her er CV-en min!</h1>
+      <div className="pageContainer">
+        <div className="pageSection">
+          <h1>Her er noe av hva jeg har gjort</h1>
           <div className="introduction">
             <p>
               Heihei, mitt navn er Eskild. eg er en greit høy kar som kommer fra
@@ -35,7 +35,7 @@ function Resume() {
         </div>
         {resumeData.map((resumeSection) => {
           return (
-            <div className="resumeSection">
+            <div className="pageSection">
               <h2>{resumeSection.sectionName}</h2>
               {resumeSection.experiencePoints.map(
                 (experiencePoint: workExperience) => {

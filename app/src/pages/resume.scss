@@ -1,25 +1,11 @@
 @use "../utilities/colors.scss";
 
-.resumeContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: colors.$accent1;
-  min-height: 100vh;
-  height: 100%;
-  width: 80%;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: 4em;
-  p {
-    text-align: justify;
-    font-size: 14px;
-    letter-spacing: normal;
-  }
-  gap: 3em;
-}
-
 img {
-  width: 30%;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  display: block;
+  max-width: 40%;
 }
 .introduction {
   display: flex;
@@ -27,11 +13,13 @@ img {
   justify-content: space-between;
   padding-left: 5%;
   padding-right: 5%;
+  gap: 10em;
   p {
     width: 60%;
     font-size: large;
     letter-spacing: inherit;
     line-height: 1.5em;
+    text-align: justify;
   }
 }
 
@@ -46,16 +34,6 @@ h2 {
   text-align: center;
 }
 
-.resumeSection {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
-  column-gap: 5em;
-}
-
 .experienceTitlecontainer {
   display: flex;
   justify-content: space-between;
@@ -65,4 +43,9 @@ h2 {
 .experiencePoint {
   width: 40%;
   gap: 1em;
+  p {
+    text-align: justify;
+    font-size: 14px;
+    letter-spacing: normal;
+  }
 }
