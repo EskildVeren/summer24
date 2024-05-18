@@ -2,15 +2,22 @@ import React from "react";
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 import "./blog.scss";
 
-function Blog() {
+export function Blog() {
   return (
     <>
       <ReturnToMainPageButton />
-      <div className="resumeContainer">
-        <div className="pageSection"></div>
+      <div className="pageContainer">
+        <div className="pageSection">
+          <h1>Velkommen til bloggen min!</h1>
+        </div>
+        <div className="blogCardContainer"></div>
       </div>
     </>
   );
 }
 
-export default Blog;
+export type blogCard = {
+  id: number;
+  title: string;
+  imageUrl: string;
+};

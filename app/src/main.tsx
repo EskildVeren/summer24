@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import Blog from "./pages/Blog.tsx";
+import { Blog } from "./pages/Blog.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage.tsx";
 import MainPage from "./pages/MainPage.tsx";
