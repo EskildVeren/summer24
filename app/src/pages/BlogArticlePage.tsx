@@ -1,4 +1,3 @@
-import React from "react";
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 import "./resume.scss";
 import { useParams } from "react-router-dom";

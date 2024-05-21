@@ -1,4 +1,3 @@
-import React from "react";
 import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
 import "./blog.scss";
 import { Link } from "react-router-dom";
