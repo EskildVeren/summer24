@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./createBlogPost.scss";
+import ReturnToMainPageButton from "../../components/ReturnToMainPageButton";
 
 type Content = {
   className: string;
@@ -22,6 +23,7 @@ function CreateBlogPost() {
 
   return (
     <>
+      <ReturnToMainPageButton />
       <div className="pageContainer">
         <div className="pageSection">
           <textarea
