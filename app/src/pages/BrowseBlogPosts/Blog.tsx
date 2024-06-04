@@ -1,4 +1,4 @@
-import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
+import ReturnToMainPageButton from "../../components/ReturnToMainPageButton";
 import "./blog.scss";
 import { Link } from "react-router-dom";
 

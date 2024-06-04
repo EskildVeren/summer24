@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import { Blog } from "./pages/Blog.tsx";
+import { Blog } from "./pages/BrowseBlogPosts/Blog.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage.tsx";
-import MainPage from "./pages/MainPage.tsx";
-import Resume from "./pages/Resume.tsx";
-import BlogArticlePage from "./pages/BlogArticlePage.tsx";
+import ErrorPage from "./pages/Error/ErrorPage.tsx";
+import MainPage from "./pages/MainPage/MainPage.tsx";
+import Resume from "./pages/Resume/Resume.ts";
+import BlogArticlePage from "./pages/BlogArticle/BlogArticlePage.tsx";
+import CreateBlogPost from "./pages/CreateBlogPost/CreateBlogPost.tsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "blog/:articleTitle",
     element: <BlogArticlePage />,
+  },
+  {
+    path: "createBlogPost",
+    element: <CreateBlogPost />,
   },
 ]);
 
