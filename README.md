@@ -20,3 +20,7 @@ I want to create a back end from the ground up, since I got an interest in back-
 ## 12.06; Finishing the calculator
 
 Typing this at 2.19 am. I have worked and socialized with my family throughout the evening (and night), and I am now happy with the calculator, which is the first of (hopefully) several mini-projects in kotlin. It don't know if the development of this README file becoming a blog is a good idea, but it is all I have since I haven't gotten to finishing my website yet.
+
+# 15.06; Learning Jetpack Compose
+
+It turns out that these mini-projects seren't as easy as I thought. During the creation of a TaskManager app, I stumbled upon a problem. I don't know how to build UIs using Kotlin. I will therefore allocate some time to learn Jetpack Compose. It might not be the most relevant to learn for my career path, but it will help me to learn Kotlin. Today I am halfway through their course on state, and will hopefully complete it soon. Unfortunately, I will soon go on a canoeing trip, which will force me to pause my coding project. Still, I will have fun paddeling around in my canoe.
