@@ -23,4 +23,8 @@ Typing this at 2.19 am. I have worked and socialized with my family throughout t
 
 # 15.06; Learning Jetpack Compose
 
-It turns out that these mini-projects seren't as easy as I thought. During the creation of a TaskManager app, I stumbled upon a problem. I don't know how to build UIs using Kotlin. I will therefore allocate some time to learn Jetpack Compose. It might not be the most relevant to learn for my career path, but it will help me to learn Kotlin. Today I am halfway through their course on state, and will hopefully complete it soon. Unfortunately, I will soon go on a canoeing trip, which will force me to pause my coding project. Still, I will have fun paddeling around in my canoe.
+It turns out that these mini-projects seren't as easy as I thought. During the creation of a TaskManager app, I stumbled upon a problem. I don't know how to build UIs using Kotlin. I will therefore allocate some time to learn Jetpack Compose. It might not be the most relevant to learn for my career path, but it will help me to learn Kotlin. Today I am halfway through their [course](https://developer.android.com/codelabs/jetpack-compose-state#0) regarding state management, and will hopefully complete it soon. Unfortunately, I will soon go on a canoeing trip, which will force me to pause my coding project. Still, I will have fun paddeling around in my canoe.
+
+# 21.06; Finishing WaterCounter
+
+I survived the canoe trip! It took some time to recover, but I also finished the [Jetpack Compulse course](https://developer.android.com/codelabs/jetpack-compose-state#0) on how to manage state, through programming the WaterCounter program. I will now continue on the task manager app to further learn Kotlin.
