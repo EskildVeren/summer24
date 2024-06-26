@@ -28,3 +28,7 @@ It turns out that these mini-projects seren't as easy as I thought. During the c
 # 21.06; Finishing WaterCounter
 
 I survived the canoe trip! It took some time to recover, but I also finished the [Jetpack Compulse course](https://developer.android.com/codelabs/jetpack-compose-state#0) on how to manage state, through programming the WaterCounter program. I will now continue on the task manager app to further learn Kotlin.
+
+# 27.06; Done with TaskManager
+
+I finally finished TaskManager. It was not perfect, and it does not save the tasks locally on the device, BUT it does work. You can add, edit or delete tasks. It does not look good. I am getting a bit bored of developing android apps, and I feel like I have gotten my intro to Kotlin. Thus I may start searching for a fun project with clear goals, such that I will actually work on it, and maybe even finish it. I will travel to and stay in Trondheim for about a week, which will either make me a super effective programmer, or this README won't be updated for a while. Only time will tell...
