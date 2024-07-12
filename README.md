@@ -21,14 +21,22 @@ I want to create a back end from the ground up, since I got an interest in back-
 
 Typing this at 2.19 am. I have worked and socialized with my family throughout the evening (and night), and I am now happy with the calculator, which is the first of (hopefully) several mini-projects in kotlin. It don't know if the development of this README file becoming a blog is a good idea, but it is all I have since I haven't gotten to finishing my website yet.
 
-# 15.06; Learning Jetpack Compose
+## 15.06; Learning Jetpack Compose
 
 It turns out that these mini-projects seren't as easy as I thought. During the creation of a TaskManager app, I stumbled upon a problem. I don't know how to build UIs using Kotlin. I will therefore allocate some time to learn Jetpack Compose. It might not be the most relevant to learn for my career path, but it will help me to learn Kotlin. Today I am halfway through their [course](https://developer.android.com/codelabs/jetpack-compose-state#0) regarding state management, and will hopefully complete it soon. Unfortunately, I will soon go on a canoeing trip, which will force me to pause my coding project. Still, I will have fun paddeling around in my canoe.
 
-# 21.06; Finishing WaterCounter
+## 21.06; Finishing WaterCounter
 
 I survived the canoe trip! It took some time to recover, but I also finished the [Jetpack Compulse course](https://developer.android.com/codelabs/jetpack-compose-state#0) on how to manage state, through programming the WaterCounter program. I will now continue on the task manager app to further learn Kotlin.
 
-# 27.06; Done with TaskManager
+## 27.06; Done with TaskManager
 
 I finally finished TaskManager. It was not perfect, and it does not save the tasks locally on the device, BUT it does work. You can add, edit or delete tasks. It does not look good. I am getting a bit bored of developing android apps, and I feel like I have gotten my intro to Kotlin. Thus I may start searching for a fun project with clear goals, such that I will actually work on it, and maybe even finish it. I will travel to and stay in Trondheim for about a week, which will either make me a super effective programmer, or this README won't be updated for a while. Only time will tell...
+
+## 12.07; Effective programmer?
+
+Sooooooo
+
+Turns out that locking myself in an apartment with a computer that is strong enough for gaming, isn't a good way to make me code more. This was the biggest timesink in the beginning, but later I was held back because I needed to pack my stuff and wash the appartment. I'm moving! Where? I'm going back to Oslo. I also think that I found something fun to code that is completely irrelevant from the app development I did earlier. Since highschool, I have been interested in creating games using the HTML canvas. One problem I have had is that this usually is done using JavaScript, but I want to use TypeScript. The problem I have met earlier using TypeScript is the lack of support for import/exporting for client-side javascript. Therefore I use webpack for this project to compile the code into code the browsers actually can use. In the urrent setup, my TypeScript code is compiled into JavaScript code, which again is compiled by webpack. Yippi
+
+I haven't tested it thoroughly yet, but I will probably do it in the following days.
