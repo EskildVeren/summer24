@@ -1,5 +1,5 @@
-import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
-import "./resume.scss";
+import ReturnToMainPageButton from "../../components/ReturnToMainPageButton";
+import "../Resume/resume.scss";
 import { useParams } from "react-router-dom";
 
 function BlogArticlePage() {

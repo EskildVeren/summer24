@@ -1,4 +1,4 @@
-import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
+import ReturnToMainPageButton from "../../components/ReturnToMainPageButton";
 
 function ErrorPage() {
   return (

@@ -1,6 +1,6 @@
-import ReturnToMainPageButton from "../components/ReturnToMainPageButton";
+import ReturnToMainPageButton from "../../components/ReturnToMainPageButton";
 import "./resume.scss";
-import eskild from "../assets/Eskild_er_meg.jpg";
+import eskild from "../../assets/Eskild_er_meg.jpg";
 
 type workExperience = {
   title: string;

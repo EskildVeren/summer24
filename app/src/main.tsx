@@ -5,7 +5,7 @@ import { Blog } from "./pages/BrowseBlogPosts/Blog.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/Error/ErrorPage.tsx";
 import MainPage from "./pages/MainPage/MainPage.tsx";
-import Resume from "./pages/Resume/Resume.ts";
+import Resume from "./pages/Resume/Resume.tsx";
 import BlogArticlePage from "./pages/BlogArticle/BlogArticlePage.tsx";
 import CreateBlogPost from "./pages/CreateBlogPost/CreateBlogPost.tsx";
 
