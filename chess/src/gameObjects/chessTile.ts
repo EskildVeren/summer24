@@ -22,5 +22,8 @@ export class Tile {
       this.size,
       this.size
     );
+    if (this.piece != null) {
+      this.piece.draw(ctx);
+    }
   };
 }

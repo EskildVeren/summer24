@@ -1,3 +1,11 @@
+import {
+  pieceBlack,
+  pieceBorderBlack,
+  pieceBorderWhite,
+  pieceWhite,
+  tileBlack,
+  tileWhite,
+} from "../assets/colors";
 import { chessPiece } from "./chessPiece";
 import { Tile } from "./chessTile";
 
@@ -18,16 +26,34 @@ export class chessBoard {
       const tileColumn = [];
       for (let y = 1; y <= 8; y++) {
         // Setting the tiles color
-        let color = "white";
+        let color = tileWhite;
         if (x % 2 === y % 2) {
-          color = "black";
+          color = tileBlack;
         }
-        tileColumn.push(new Tile(x, y, this.pixelSize / 8, color));
+        const tile = new Tile(x, y, this.pixelSize / 8, color);
+        tileColumn.push(tile);
 
-        if (y <= 2 || y >= 7) {
-          this.activePieces.push(
-            new chessPiece(x, y, "purple", this.pixelSize)
+        if (y <= 2) {
+          const piece = new chessPiece(
+            x,
+            y,
+            pieceBlack,
+            pieceBorderBlack,
+            this.pixelSize
           );
+          this.activePieces.push(piece);
+          tile.piece = piece;
+        }
+        if (y >= 7) {
+          const piece = new chessPiece(
+            x,
+            y,
+            pieceWhite,
+            pieceBorderWhite,
+            this.pixelSize
+          );
+          this.activePieces.push(piece);
+          tile.piece = piece;
         }
       }
       this.tiles.push(tileColumn);

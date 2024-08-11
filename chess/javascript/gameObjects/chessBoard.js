@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.chessBoard = void 0;
+var colors_1 = require("../assets/colors");
 var chessPiece_1 = require("./chessPiece");
 var chessTile_1 = require("./chessTile");
 var chessBoard = /** @class */ (function () {
@@ -27,13 +28,21 @@ var chessBoard = /** @class */ (function () {
             var tileColumn = [];
             for (var y = 1; y <= 8; y++) {
                 // Setting the tiles color
-                var color = "white";
+                var color = colors_1.tileWhite;
                 if (x % 2 === y % 2) {
-                    color = "black";
+                    color = colors_1.tileBlack;
                 }
-                tileColumn.push(new chessTile_1.Tile(x, y, this.pixelSize / 8, color));
-                if (y <= 2 || y >= 7) {
-                    this.activePieces.push(new chessPiece_1.chessPiece(x, y, "purple", this.pixelSize));
+                var tile = new chessTile_1.Tile(x, y, this.pixelSize / 8, color);
+                tileColumn.push(tile);
+                if (y <= 2) {
+                    var piece = new chessPiece_1.chessPiece(x, y, colors_1.pieceBlack, colors_1.pieceBorderBlack, this.pixelSize);
+                    this.activePieces.push(piece);
+                    tile.piece = piece;
+                }
+                if (y >= 7) {
+                    var piece = new chessPiece_1.chessPiece(x, y, colors_1.pieceWhite, colors_1.pieceBorderWhite, this.pixelSize);
+                    this.activePieces.push(piece);
+                    tile.piece = piece;
                 }
             }
             this.tiles.push(tileColumn);
