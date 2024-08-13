@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build && webpack",
-    "typescript": "tsc --build --watch"
+    "typescript": "tsc --build --watch",
+    "autocompile": "tsc --build --watch & webpack"
   },
   "author": "eskildveren",
   "license": "ISC",
