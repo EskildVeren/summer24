@@ -44,3 +44,7 @@ I haven't tested it thoroughly yet, but I will probably do it in the following d
 ## 11.08; Life happens
 
 Many personal problems rose up after moving, so I haven't had any motivation to code. I abandoned my old canvas game project, in favor of two other projects. The first I want to keep a secret for now, but the second one is already in this repository. I am using the setup from my old canvasgame, and applying it to create chess using the canvas. Development is going forwards, and I am very happy with the progress. TypeScript + webpack makes everything much faster to code, and more comfortable to work with, while not making the tech stack overly complicated. Still, I will need to stick to this project in order to actually finish something this summer. I feel like it is done when "en passant" finally is coded into the game.
+
+## 18.08; Time moves fast
+
+I feel like I just started with chess, but an entire week has already passed. Was on holiday in Sarpsbord, which was nice for relaxation. Not as nice for my game. Implemented moving pieces today, which was more difficult than expected. I had to really break down the different gamestate and how I would progress to each one. As mnay problems this came down to thinking about what possible inputs there were, and finding out what output to expect. It is still a little buggy, but that is a problem for future me.
