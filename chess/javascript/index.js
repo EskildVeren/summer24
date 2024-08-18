@@ -62,6 +62,12 @@ canvas.addEventListener("click", function (e) {
         markedTiles = [];
         board.movePiece(markedPiece, clickedTile);
         main();
+        if (gameState.playerTurn == "white") {
+            gameState.playerTurn = "black";
+        }
+        else {
+            gameState.playerTurn = "white";
+        }
     }
     else {
         gameState.state = states.base;
