@@ -20,25 +20,55 @@ var canvasHeight = 800;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 // Initiate game objects
-var board = new chessBoard_1.chessBoard(800);
+var board = new chessBoard_1.ChessBoard(800);
 var clickedPiece = null;
+var clickedTile = null;
+var markedTiles = [];
+var markedPiece;
+var states = {
+    base: "base",
+    showPossibleMoves: "showPossibleMoves",
+    movePiece: "movePiece",
+};
+var gameState = {
+    state: states.base,
+    numberOfMoves: 0,
+    playerTurn: "white",
+};
 // Add eventlisteners to canvas
 canvas.addEventListener("click", function (e) {
+    main();
+    // Redraws board on click
     // Finding where on the canvas the click happened
     var canvasRect = canvas.getBoundingClientRect();
     var mouseX = e.clientX - canvasRect.left;
     var mouseY = e.clientY - canvasRect.top;
-    // ctx.fillStyle = "blue";
-    // ctx.fillRect(mouseX - 20, mouseY - 20, 40, 40);
     // Using the cursor coordinates relative to the canvas in order to find what square was clicked
     var tileWidth = board.pixelSize / 8;
     var xCord = Math.floor(mouseX / tileWidth);
     var yCord = Math.floor(mouseY / tileWidth);
-    clickedPiece = board.tiles[xCord][yCord].piece;
-    if (clickedPiece != null) {
-        clickedPiece.color = "red";
+    clickedTile = board.tiles[xCord][yCord];
+    clickedPiece = clickedTile.piece;
+    if (clickedPiece != null && clickedPiece.owner == gameState.playerTurn) {
+        markedPiece = clickedPiece;
+        gameState.state = states.showPossibleMoves;
+        markedTiles = board.getValidMoves(clickedPiece);
+        markedTiles.forEach(function (tile) {
+            tile.mark(ctx, "blue");
+        });
     }
-    main();
+    else if (markedTiles.includes(clickedTile) && markedPiece != null) {
+        gameState.state = states.movePiece;
+        markedTiles = [];
+        board.movePiece(markedPiece, clickedTile);
+        main();
+    }
+    else {
+        gameState.state = states.base;
+        markedTiles = [];
+        markedPiece = null;
+    }
+    console.log(gameState.state);
 });
 // Main function for updating game
 var main = function () {

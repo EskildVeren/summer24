@@ -1,11 +1,11 @@
-import { chessPiece } from "./chessPiece";
+import { ChessPiece } from "./chessPiece";
 
 export class Tile {
   x: number;
   y: number;
   size: number;
   color: string;
-  piece: chessPiece | null;
+  piece: ChessPiece | null;
 
   constructor(x: number, y: number, size: number, color: string) {
     this.x = x;
@@ -16,6 +16,19 @@ export class Tile {
   }
   draw = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = this.color;
+    ctx.fillRect(
+      (this.x - 1) * this.size,
+      (this.y - 1) * this.size,
+      this.size,
+      this.size
+    );
+    if (this.piece != null) {
+      this.piece.draw(ctx);
+    }
+  };
+
+  mark = (ctx: CanvasRenderingContext2D, color: string) => {
+    ctx.fillStyle = color;
     ctx.fillRect(
       (this.x - 1) * this.size,
       (this.y - 1) * this.size,

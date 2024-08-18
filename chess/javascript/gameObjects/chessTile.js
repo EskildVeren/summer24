@@ -11,6 +11,13 @@ var Tile = /** @class */ (function () {
                 _this.piece.draw(ctx);
             }
         };
+        this.mark = function (ctx, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect((_this.x - 1) * _this.size, (_this.y - 1) * _this.size, _this.size, _this.size);
+            if (_this.piece != null) {
+                _this.piece.draw(ctx);
+            }
+        };
         this.x = x;
         this.y = y;
         this.size = size;
