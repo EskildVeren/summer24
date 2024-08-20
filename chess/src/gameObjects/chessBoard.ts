@@ -109,7 +109,7 @@ export class ChessBoard {
           break;
 
         case "down":
-          for (let i = y + 1; i <= 7; i++) {
+          for (let i = y + 1; i < 7; i++) {
             const reachedTile = this.tiles[x][i];
             if (reachedTile.piece == null) {
               possibleTiles.push(reachedTile);
@@ -137,7 +137,7 @@ export class ChessBoard {
           break;
 
         case "right":
-          for (let i = x + 1; i <= 7; i++) {
+          for (let i = x + 1; i < 7; i++) {
             const reachedTile = this.tiles[i][y];
             if (reachedTile.piece == null) {
               possibleTiles.push(reachedTile);
@@ -159,7 +159,9 @@ export class ChessBoard {
   };
 
   movePiece = (piece: ChessPiece, newTile: Tile) => {
-    const oldTile = this.tiles[piece.x][piece.y];
+    console.log(piece.x);
+
+    const oldTile = this.tiles[piece.x - 1][piece.y - 1];
     oldTile.piece = null;
     newTile.piece = piece;
     piece.x = newTile.x;

@@ -50,7 +50,7 @@ var ChessBoard = /** @class */ (function () {
                         }
                         break;
                     case "down":
-                        for (var i = y + 1; i <= 7; i++) {
+                        for (var i = y + 1; i < 7; i++) {
                             var reachedTile = _this.tiles[x][i];
                             if (reachedTile.piece == null) {
                                 possibleTiles.push(reachedTile);
@@ -80,7 +80,7 @@ var ChessBoard = /** @class */ (function () {
                         }
                         break;
                     case "right":
-                        for (var i = x + 1; i <= 7; i++) {
+                        for (var i = x + 1; i < 7; i++) {
                             var reachedTile = _this.tiles[i][y];
                             if (reachedTile.piece == null) {
                                 possibleTiles.push(reachedTile);
@@ -101,7 +101,8 @@ var ChessBoard = /** @class */ (function () {
             return possibleTiles;
         };
         this.movePiece = function (piece, newTile) {
-            var oldTile = _this.tiles[piece.x][piece.y];
+            console.log(piece.x);
+            var oldTile = _this.tiles[piece.x - 1][piece.y - 1];
             oldTile.piece = null;
             newTile.piece = piece;
             piece.x = newTile.x;
