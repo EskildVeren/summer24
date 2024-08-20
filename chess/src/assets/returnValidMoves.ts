@@ -15,35 +15,35 @@ export function returnValidMoves(
   const possibleTiles: Tile[] = [];
   const startX = piece.x;
   const startY = piece.y;
+  let multiplier = 0;
+  let repeating = true;
 
-  if (movementRule.repeating === false) {
-    const x = startX + movementRule.xModifier;
-    const y = startY + movementRule.yModifier;
-    if (y < 8 && y >= 0 && x < 8 && x >= 0) {
-      possibleTiles.push(tiles[x][y]);
+  while (repeating) {
+    repeating = movementRule.repeating;
+    multiplier++;
+    const x = startX + movementRule.xModifier * multiplier;
+    const y = startY + movementRule.yModifier * multiplier;
+    console.log(multiplier);
+
+    if (multiplier > 100) {
+      throw new Error("You have an infinite loop in returnValidMoves.ts");
     }
-  } else {
-    for (let multiplier = 1; multiplier < 9 && multiplier > -1; multiplier++) {
-      const x = startX + movementRule.xModifier * multiplier;
-      const y = startY + movementRule.yModifier * multiplier;
+    console.log("x:", x, "y:", y);
+    console.log(movementRule.repeating);
 
-      if (y > 7 || y < 0 || x > 7 || x < 0) {
-        return possibleTiles;
-      }
-      console.log("x:", x, "y:", y);
+    if (y > 7 || y < 0 || x > 7 || x < 0) {
+      return possibleTiles;
+    }
+    const reachedTile = tiles[x][y];
 
-      const reachedTile = tiles[x][y];
-
-      if (reachedTile.piece == null) {
-        possibleTiles.push(reachedTile);
-      } else if (reachedTile.piece.owner != piece.owner) {
-        possibleTiles.push(reachedTile);
-        return possibleTiles;
-      } else {
-        return possibleTiles;
-      }
+    if (reachedTile.piece == null) {
+      possibleTiles.push(reachedTile);
+    } else if (reachedTile.piece.owner != piece.owner) {
+      possibleTiles.push(reachedTile);
+      return possibleTiles;
+    } else {
+      return possibleTiles;
     }
   }
-
   return possibleTiles;
 }

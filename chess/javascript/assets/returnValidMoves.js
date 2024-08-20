@@ -5,32 +5,32 @@ function returnValidMoves(piece, movementRule, tiles) {
     var possibleTiles = [];
     var startX = piece.x;
     var startY = piece.y;
-    if (movementRule.repeating === false) {
-        var x = startX + movementRule.xModifier;
-        var y = startY + movementRule.yModifier;
-        if (y < 8 && y >= 0 && x < 8 && x >= 0) {
-            possibleTiles.push(tiles[x][y]);
+    var multiplier = 0;
+    var repeating = true;
+    while (repeating) {
+        repeating = movementRule.repeating;
+        multiplier++;
+        var x = startX + movementRule.xModifier * multiplier;
+        var y = startY + movementRule.yModifier * multiplier;
+        console.log(multiplier);
+        if (multiplier > 100) {
+            throw new Error("You have an infinite loop in returnValidMoves.ts");
         }
-    }
-    else {
-        for (var multiplier = 1; multiplier < 9 && multiplier > -1; multiplier++) {
-            var x = startX + movementRule.xModifier * multiplier;
-            var y = startY + movementRule.yModifier * multiplier;
-            if (y > 7 || y < 0 || x > 7 || x < 0) {
-                return possibleTiles;
-            }
-            console.log("x:", x, "y:", y);
-            var reachedTile = tiles[x][y];
-            if (reachedTile.piece == null) {
-                possibleTiles.push(reachedTile);
-            }
-            else if (reachedTile.piece.owner != piece.owner) {
-                possibleTiles.push(reachedTile);
-                return possibleTiles;
-            }
-            else {
-                return possibleTiles;
-            }
+        console.log("x:", x, "y:", y);
+        console.log(movementRule.repeating);
+        if (y > 7 || y < 0 || x > 7 || x < 0) {
+            return possibleTiles;
+        }
+        var reachedTile = tiles[x][y];
+        if (reachedTile.piece == null) {
+            possibleTiles.push(reachedTile);
+        }
+        else if (reachedTile.piece.owner != piece.owner) {
+            possibleTiles.push(reachedTile);
+            return possibleTiles;
+        }
+        else {
+            return possibleTiles;
         }
     }
     return possibleTiles;
