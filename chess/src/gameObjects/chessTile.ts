@@ -16,12 +16,7 @@ export class Tile {
   }
   draw = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = this.color;
-    ctx.fillRect(
-      (this.x - 1) * this.size,
-      (this.y - 1) * this.size,
-      this.size,
-      this.size
-    );
+    ctx.fillRect(this.x * this.size, this.y * this.size, this.size, this.size);
     if (this.piece != null) {
       this.piece.draw(ctx);
     }
@@ -29,12 +24,7 @@ export class Tile {
 
   mark = (ctx: CanvasRenderingContext2D, color: string) => {
     ctx.fillStyle = color;
-    ctx.fillRect(
-      (this.x - 1) * this.size,
-      (this.y - 1) * this.size,
-      this.size,
-      this.size
-    );
+    ctx.fillRect(this.x * this.size, this.y * this.size, this.size, this.size);
     if (this.piece != null) {
       this.piece.draw(ctx);
     }

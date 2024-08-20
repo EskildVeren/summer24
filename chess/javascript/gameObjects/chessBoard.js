@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
+var getPieceType_1 = require("../assets/getPieceType");
 var returnValidMoves_1 = require("../assets/returnValidMoves");
-var rook_1 = require("../chessPieces/rook");
-var chessPiece_1 = require("./chessPiece");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
     function ChessBoard(pixelSize) {
@@ -15,11 +14,6 @@ var ChessBoard = /** @class */ (function () {
                     _this.tiles[i][tileIndex].draw(ctx);
                 }
             }
-        };
-        this.drawPieces = function (ctx) {
-            _this.activePieces.forEach(function (chessPiece) {
-                chessPiece.draw(ctx);
-            });
         };
         this.newGetValidMoves = function (piece) {
             var possibleTiles = [];
@@ -116,7 +110,7 @@ var ChessBoard = /** @class */ (function () {
       */
         this.movePiece = function (piece, newTile) {
             console.log(piece.x);
-            var oldTile = _this.tiles[piece.x - 1][piece.y - 1];
+            var oldTile = _this.tiles[piece.x][piece.y];
             oldTile.piece = null;
             newTile.piece = piece;
             piece.x = newTile.x;
@@ -125,12 +119,11 @@ var ChessBoard = /** @class */ (function () {
         };
         this.pixelSize = pixelSize;
         this.tiles = [];
-        this.activePieces = [];
         this.heaven = [];
         // Add tiles to the chessboards
-        for (var x = 1; x <= 8; x++) {
+        for (var x = 0; x < 8; x++) {
             var tileColumn = [];
-            for (var y = 1; y <= 8; y++) {
+            for (var y = 0; y < 8; y++) {
                 // Setting the tiles color
                 var color = colors_1.tileWhite;
                 if (x % 2 === y % 2) {
@@ -138,16 +131,8 @@ var ChessBoard = /** @class */ (function () {
                 }
                 var tile = new chessTile_1.Tile(x, y, this.pixelSize / 8, color);
                 tileColumn.push(tile);
-                if (y <= 2) {
-                    var piece = new rook_1.Rook(x, y, colors_1.pieceBlack, colors_1.pieceBorderBlack, this.pixelSize, "black");
-                    this.activePieces.push(piece);
-                    tile.piece = piece;
-                }
-                if (y >= 7) {
-                    var piece = new chessPiece_1.ChessPiece(x, y, colors_1.pieceWhite, colors_1.pieceBorderWhite, this.pixelSize, "white");
-                    this.activePieces.push(piece);
-                    tile.piece = piece;
-                }
+                var piece = (0, getPieceType_1.getPieceType)(x, y, this.pixelSize);
+                tile.piece = piece;
             }
             this.tiles.push(tileColumn);
         }

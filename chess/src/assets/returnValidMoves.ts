@@ -13,8 +13,8 @@ export function returnValidMoves(
   tiles: Tile[][]
 ) {
   const possibleTiles: Tile[] = [];
-  const startX = piece.x - 1;
-  const startY = piece.y - 1;
+  const startX = piece.x;
+  const startY = piece.y;
 
   if (movementRule.repeating === false) {
     const x = startX + movementRule.xModifier;

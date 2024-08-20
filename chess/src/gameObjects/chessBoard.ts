@@ -6,6 +6,7 @@ import {
   tileBlack,
   tileWhite,
 } from "../assets/colors";
+import { getPieceType } from "../assets/getPieceType";
 import { returnValidMoves } from "../assets/returnValidMoves";
 import { Rook } from "../chessPieces/rook";
 import { ChessPiece } from "./chessPiece";
@@ -14,19 +15,17 @@ import { Tile } from "./chessTile";
 export class ChessBoard {
   pixelSize: number;
   tiles: Tile[][];
-  activePieces: ChessPiece[];
   heaven: ChessPiece[];
 
   constructor(pixelSize: number) {
     this.pixelSize = pixelSize;
     this.tiles = [];
-    this.activePieces = [];
     this.heaven = [];
 
     // Add tiles to the chessboards
-    for (let x = 1; x <= 8; x++) {
+    for (let x = 0; x < 8; x++) {
       const tileColumn = [];
-      for (let y = 1; y <= 8; y++) {
+      for (let y = 0; y < 8; y++) {
         // Setting the tiles color
         let color = tileWhite;
         if (x % 2 === y % 2) {
@@ -35,30 +34,8 @@ export class ChessBoard {
         const tile = new Tile(x, y, this.pixelSize / 8, color);
         tileColumn.push(tile);
 
-        if (y <= 2) {
-          const piece = new Rook(
-            x,
-            y,
-            pieceBlack,
-            pieceBorderBlack,
-            this.pixelSize,
-            "black"
-          );
-          this.activePieces.push(piece);
-          tile.piece = piece;
-        }
-        if (y >= 7) {
-          const piece = new ChessPiece(
-            x,
-            y,
-            pieceWhite,
-            pieceBorderWhite,
-            this.pixelSize,
-            "white"
-          );
-          this.activePieces.push(piece);
-          tile.piece = piece;
-        }
+        const piece: ChessPiece | null = getPieceType(x, y, this.pixelSize);
+        tile.piece = piece;
       }
       this.tiles.push(tileColumn);
     }
@@ -70,12 +47,6 @@ export class ChessBoard {
         this.tiles[i][tileIndex].draw(ctx);
       }
     }
-  };
-
-  drawPieces = (ctx: CanvasRenderingContext2D) => {
-    this.activePieces.forEach((chessPiece) => {
-      chessPiece.draw(ctx);
-    });
   };
 
   newGetValidMoves = (piece: ChessPiece) => {
@@ -175,7 +146,7 @@ export class ChessBoard {
   movePiece = (piece: ChessPiece, newTile: Tile) => {
     console.log(piece.x);
 
-    const oldTile = this.tiles[piece.x - 1][piece.y - 1];
+    const oldTile = this.tiles[piece.x][piece.y];
     oldTile.piece = null;
     newTile.piece = piece;
     piece.x = newTile.x;

@@ -15,16 +15,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Rook = void 0;
+exports.Queen = void 0;
 var movementRules_1 = require("../assets/movementRules");
 var chessPiece_1 = require("../gameObjects/chessPiece");
-var Rook = /** @class */ (function (_super) {
-    __extends(Rook, _super);
-    function Rook(x, y, color, borderColor, boardSize, owner) {
+var Queen = /** @class */ (function (_super) {
+    __extends(Queen, _super);
+    function Queen(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
         _this.movementRules = (0, movementRules_1.getQueenMoves)();
         return _this;
     }
-    return Rook;
+    return Queen;
 }(chessPiece_1.ChessPiece));
-exports.Rook = Rook;
+exports.Queen = Queen;

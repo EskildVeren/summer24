@@ -59,8 +59,8 @@ export class ChessPiece {
     // Drawing the piece's border
     ctx.fillStyle = this.borderColor;
     ctx.fillRect(
-      tileWidth * (this.x - 1) + (tileWidth - pieceSize) / 2 - pieceBorderSize,
-      tileWidth * (this.y - 1) + (tileWidth - pieceSize) / 2 - pieceBorderSize,
+      tileWidth * this.x + (tileWidth - pieceSize) / 2 - pieceBorderSize,
+      tileWidth * this.y + (tileWidth - pieceSize) / 2 - pieceBorderSize,
       pieceSize + pieceBorderSize * 2,
       pieceSize + pieceBorderSize * 2
     );
@@ -68,8 +68,8 @@ export class ChessPiece {
     // Drawing the piece itself
     ctx.fillStyle = this.color;
     ctx.fillRect(
-      tileWidth * (this.x - 1) + (tileWidth - pieceSize) / 2,
-      tileWidth * (this.y - 1) + (tileWidth - pieceSize) / 2,
+      tileWidth * this.x + (tileWidth - pieceSize) / 2,
+      tileWidth * this.y + (tileWidth - pieceSize) / 2,
       pieceSize,
       pieceSize
     );
@@ -88,8 +88,8 @@ export class ChessPiece {
     // Drawing the piece's border
     ctx.fillStyle = borderColor;
     ctx.fillRect(
-      tileWidth * (this.x - 1) + (tileWidth - pieceSize) / 2 - pieceBorderSize,
-      tileWidth * (this.y - 1) + (tileWidth - pieceSize) / 2 - pieceBorderSize,
+      tileWidth * this.x + (tileWidth - pieceSize) / 2 - pieceBorderSize,
+      tileWidth * this.y + (tileWidth - pieceSize) / 2 - pieceBorderSize,
       pieceSize + pieceBorderSize * 2,
       pieceSize + pieceBorderSize * 2
     );
@@ -97,8 +97,8 @@ export class ChessPiece {
     // Drawing the piece itself
     ctx.fillStyle = mainColor;
     ctx.fillRect(
-      tileWidth * (this.x - 1) + (tileWidth - pieceSize) / 2,
-      tileWidth * (this.y - 1) + (tileWidth - pieceSize) / 2,
+      tileWidth * this.x + (tileWidth - pieceSize) / 2,
+      tileWidth * this.y + (tileWidth - pieceSize) / 2,
       pieceSize,
       pieceSize
     );

@@ -1,7 +1,7 @@
 import { getKingMoves } from "../assets/movementRules";
 import { ChessPiece } from "../gameObjects/chessPiece";
 
-export class Rook extends ChessPiece {
+export class King extends ChessPiece {
   constructor(
     x: number,
     y: number,

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.returnValidMoves = returnValidMoves;
 function returnValidMoves(piece, movementRule, tiles) {
     var possibleTiles = [];
-    var startX = piece.x - 1;
-    var startY = piece.y - 1;
+    var startX = piece.x;
+    var startY = piece.y;
     if (movementRule.repeating === false) {
         var x = startX + movementRule.xModifier;
         var y = startY + movementRule.yModifier;

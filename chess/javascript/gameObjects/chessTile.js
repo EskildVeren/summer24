@@ -6,14 +6,14 @@ var Tile = /** @class */ (function () {
         var _this = this;
         this.draw = function (ctx) {
             ctx.fillStyle = _this.color;
-            ctx.fillRect((_this.x - 1) * _this.size, (_this.y - 1) * _this.size, _this.size, _this.size);
+            ctx.fillRect(_this.x * _this.size, _this.y * _this.size, _this.size, _this.size);
             if (_this.piece != null) {
                 _this.piece.draw(ctx);
             }
         };
         this.mark = function (ctx, color) {
             ctx.fillStyle = color;
-            ctx.fillRect((_this.x - 1) * _this.size, (_this.y - 1) * _this.size, _this.size, _this.size);
+            ctx.fillRect(_this.x * _this.size, _this.y * _this.size, _this.size, _this.size);
             if (_this.piece != null) {
                 _this.piece.draw(ctx);
             }
