@@ -192,3 +192,7 @@ export const getKnightMoves = () => {
     upperRight,
   ];
 };
+
+export const getPawnMoves = () => {
+  return getRookMoves();
+};

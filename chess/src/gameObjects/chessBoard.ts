@@ -7,6 +7,7 @@ import {
   tileWhite,
 } from "../assets/colors";
 import { returnValidMoves } from "../assets/returnValidMoves";
+import { Rook } from "../chessPieces/rook";
 import { ChessPiece } from "./chessPiece";
 import { Tile } from "./chessTile";
 
@@ -35,7 +36,7 @@ export class ChessBoard {
         tileColumn.push(tile);
 
         if (y <= 2) {
-          const piece = new ChessPiece(
+          const piece = new Rook(
             x,
             y,
             pieceBlack,

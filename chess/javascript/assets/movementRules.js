@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getKnightMoves = exports.getQueenMoves = exports.getKingMoves = exports.getBishopMoves = exports.getRookMoves = void 0;
+exports.getPawnMoves = exports.getKnightMoves = exports.getQueenMoves = exports.getKingMoves = exports.getBishopMoves = exports.getRookMoves = void 0;
 var getRookMoves = function () {
     var up = {
         xModifier: 0,
@@ -190,3 +190,7 @@ var getKnightMoves = function () {
     ];
 };
 exports.getKnightMoves = getKnightMoves;
+var getPawnMoves = function () {
+    return (0, exports.getRookMoves)();
+};
+exports.getPawnMoves = getPawnMoves;

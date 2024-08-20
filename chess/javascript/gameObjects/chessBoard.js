@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
 var returnValidMoves_1 = require("../assets/returnValidMoves");
+var rook_1 = require("../chessPieces/rook");
 var chessPiece_1 = require("./chessPiece");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
@@ -138,7 +139,7 @@ var ChessBoard = /** @class */ (function () {
                 var tile = new chessTile_1.Tile(x, y, this.pixelSize / 8, color);
                 tileColumn.push(tile);
                 if (y <= 2) {
-                    var piece = new chessPiece_1.ChessPiece(x, y, colors_1.pieceBlack, colors_1.pieceBorderBlack, this.pixelSize, "black");
+                    var piece = new rook_1.Rook(x, y, colors_1.pieceBlack, colors_1.pieceBorderBlack, this.pixelSize, "black");
                     this.activePieces.push(piece);
                     tile.piece = piece;
                 }
