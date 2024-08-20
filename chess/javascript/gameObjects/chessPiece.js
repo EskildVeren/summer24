@@ -1,6 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessPiece = void 0;
+var getTestMovementRules = function () {
+    var up = {
+        xModifier: 0,
+        yModifier: -1,
+        repeating: true,
+    };
+    var down = {
+        xModifier: 0,
+        yModifier: 1,
+        repeating: true,
+    };
+    var left = {
+        xModifier: -1,
+        yModifier: 0,
+        repeating: true,
+    };
+    var right = {
+        xModifier: 1,
+        yModifier: 0,
+        repeating: true,
+    };
+    return [up, down, left, right];
+};
 var ChessPiece = /** @class */ (function () {
     function ChessPiece(x, y, color, borderColor, boardSize, owner) {
         var _this = this;
@@ -33,7 +56,7 @@ var ChessPiece = /** @class */ (function () {
         this.color = color;
         this.borderColor = borderColor;
         this.boardSize = boardSize;
-        this.movementRules = ["up", "down", "left", "right"];
+        this.movementRules = getTestMovementRules();
         this.owner = owner;
     }
     return ChessPiece;

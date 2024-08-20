@@ -13,8 +13,8 @@ export function returnValidMoves(
   tiles: Tile[][]
 ) {
   const possibleTiles: Tile[] = [];
-  const startX = piece.x;
-  const startY = piece.y;
+  const startX = piece.x - 1;
+  const startY = piece.y - 1;
 
   if (movementRule.repeating === false) {
     const x = startX + movementRule.xModifier;
@@ -23,13 +23,14 @@ export function returnValidMoves(
       possibleTiles.push(tiles[x][y]);
     }
   } else {
-    for (let multiplier = 1; multiplier < 7 && multiplier > -1; multiplier++) {
+    for (let multiplier = 1; multiplier < 9 && multiplier > -1; multiplier++) {
       const x = startX + movementRule.xModifier * multiplier;
       const y = startY + movementRule.yModifier * multiplier;
 
-      if (y > 7 && y < 0 && x > 7 && x < 0) {
+      if (y > 7 || y < 0 || x > 7 || x < 0) {
         return possibleTiles;
       }
+      console.log("x:", x, "y:", y);
 
       const reachedTile = tiles[x][y];
 

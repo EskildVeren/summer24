@@ -6,6 +6,7 @@ import {
   tileBlack,
   tileWhite,
 } from "../assets/colors";
+import { returnValidMoves } from "../assets/returnValidMoves";
 import { ChessPiece } from "./chessPiece";
 import { Tile } from "./chessTile";
 
@@ -76,6 +77,17 @@ export class ChessBoard {
     });
   };
 
+  newGetValidMoves = (piece: ChessPiece) => {
+    let possibleTiles: Tile[] = [];
+    const movementRules = piece.movementRules;
+    movementRules.forEach((movementRule) => {
+      returnValidMoves(piece, movementRule, this.tiles).forEach((tile) => {
+        possibleTiles.push(tile);
+      });
+    });
+    return possibleTiles;
+  };
+  /*
   getValidMoves = (piece: ChessPiece) => {
     const possibleTiles: Tile[] = [];
     const x = piece.x - 1;
@@ -157,6 +169,7 @@ export class ChessBoard {
 
     return possibleTiles;
   };
+*/
 
   movePiece = (piece: ChessPiece, newTile: Tile) => {
     console.log(piece.x);

@@ -52,7 +52,7 @@ canvas.addEventListener("click", function (e) {
     if (clickedPiece != null && clickedPiece.owner == gameState.playerTurn) {
         markedPiece = clickedPiece;
         gameState.state = states.showPossibleMoves;
-        markedTiles = board.getValidMoves(clickedPiece);
+        markedTiles = board.newGetValidMoves(clickedPiece);
         markedTiles.forEach(function (tile) {
             tile.mark(ctx, "blue");
         });

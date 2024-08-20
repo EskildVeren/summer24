@@ -1,10 +1,37 @@
+import { movementRule } from "../assets/returnValidMoves";
+
+const getTestMovementRules = () => {
+  const up: movementRule = {
+    xModifier: 0,
+    yModifier: -1,
+    repeating: true,
+  };
+  const down: movementRule = {
+    xModifier: 0,
+    yModifier: 1,
+    repeating: true,
+  };
+  const left: movementRule = {
+    xModifier: -1,
+    yModifier: 0,
+    repeating: true,
+  };
+  const right: movementRule = {
+    xModifier: 1,
+    yModifier: 0,
+    repeating: true,
+  };
+
+  return [up, down, left, right];
+};
+
 export class ChessPiece {
   x: number;
   y: number;
   color: string;
   borderColor: string;
   boardSize: number;
-  movementRules: string[];
+  movementRules: movementRule[];
   owner: string;
 
   constructor(
@@ -20,7 +47,7 @@ export class ChessPiece {
     this.color = color;
     this.borderColor = borderColor;
     this.boardSize = boardSize;
-    this.movementRules = ["up", "down", "left", "right"];
+    this.movementRules = getTestMovementRules();
     this.owner = owner;
   }
   draw = (ctx: CanvasRenderingContext2D) => {

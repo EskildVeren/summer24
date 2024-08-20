@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
+var returnValidMoves_1 = require("../assets/returnValidMoves");
 var chessPiece_1 = require("./chessPiece");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
@@ -19,87 +20,99 @@ var ChessBoard = /** @class */ (function () {
                 chessPiece.draw(ctx);
             });
         };
-        this.getValidMoves = function (piece) {
+        this.newGetValidMoves = function (piece) {
             var possibleTiles = [];
-            var x = piece.x - 1;
-            var y = piece.y - 1;
             var movementRules = piece.movementRules;
-            movementRules.forEach(function (movementStyle) {
-                switch (movementStyle.toLowerCase()) {
-                    case "rook":
-                        _this.tiles.forEach(function (column) {
-                            possibleTiles.push(column[y]);
-                        });
-                        _this.tiles[x].forEach(function (tile) {
-                            possibleTiles.push(tile);
-                        });
-                        break;
-                    case "up":
-                        for (var i = y - 1; i >= 0; i--) {
-                            var reachedTile = _this.tiles[x][i];
-                            if (reachedTile.piece == null) {
-                                possibleTiles.push(reachedTile);
-                            }
-                            else if (reachedTile.piece.owner != piece.owner) {
-                                possibleTiles.push(reachedTile);
-                                break;
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        break;
-                    case "down":
-                        for (var i = y + 1; i < 7; i++) {
-                            var reachedTile = _this.tiles[x][i];
-                            if (reachedTile.piece == null) {
-                                possibleTiles.push(reachedTile);
-                            }
-                            else if (reachedTile.piece.owner != piece.owner) {
-                                possibleTiles.push(reachedTile);
-                                break;
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        break;
-                    case "left":
-                        for (var i = x - 1; i >= 0; i--) {
-                            var reachedTile = _this.tiles[i][y];
-                            if (reachedTile.piece == null) {
-                                possibleTiles.push(reachedTile);
-                            }
-                            else if (reachedTile.piece.owner != piece.owner) {
-                                possibleTiles.push(reachedTile);
-                                break;
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        break;
-                    case "right":
-                        for (var i = x + 1; i < 7; i++) {
-                            var reachedTile = _this.tiles[i][y];
-                            if (reachedTile.piece == null) {
-                                possibleTiles.push(reachedTile);
-                            }
-                            else if (reachedTile.piece.owner != piece.owner) {
-                                possibleTiles.push(reachedTile);
-                                break;
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        break;
-                    default:
-                        break;
-                }
+            movementRules.forEach(function (movementRule) {
+                (0, returnValidMoves_1.returnValidMoves)(piece, movementRule, _this.tiles).forEach(function (tile) {
+                    possibleTiles.push(tile);
+                });
             });
             return possibleTiles;
         };
+        /*
+        getValidMoves = (piece: ChessPiece) => {
+          const possibleTiles: Tile[] = [];
+          const x = piece.x - 1;
+          const y = piece.y - 1;
+          const movementRules = piece.movementRules;
+      
+          movementRules.forEach((movementStyle: string) => {
+            switch (movementStyle.toLowerCase()) {
+              case "rook":
+                this.tiles.forEach((column: Tile[]) => {
+                  possibleTiles.push(column[y]);
+                });
+      
+                this.tiles[x].forEach((tile: Tile) => {
+                  possibleTiles.push(tile);
+                });
+                break;
+      
+              case "up":
+                for (let i = y - 1; i >= 0; i--) {
+                  const reachedTile = this.tiles[x][i];
+                  if (reachedTile.piece == null) {
+                    possibleTiles.push(reachedTile);
+                  } else if (reachedTile.piece.owner != piece.owner) {
+                    possibleTiles.push(reachedTile);
+                    break;
+                  } else {
+                    break;
+                  }
+                }
+                break;
+      
+              case "down":
+                for (let i = y + 1; i < 7; i++) {
+                  const reachedTile = this.tiles[x][i];
+                  if (reachedTile.piece == null) {
+                    possibleTiles.push(reachedTile);
+                  } else if (reachedTile.piece.owner != piece.owner) {
+                    possibleTiles.push(reachedTile);
+                    break;
+                  } else {
+                    break;
+                  }
+                }
+                break;
+      
+              case "left":
+                for (let i = x - 1; i >= 0; i--) {
+                  const reachedTile = this.tiles[i][y];
+                  if (reachedTile.piece == null) {
+                    possibleTiles.push(reachedTile);
+                  } else if (reachedTile.piece.owner != piece.owner) {
+                    possibleTiles.push(reachedTile);
+                    break;
+                  } else {
+                    break;
+                  }
+                }
+                break;
+      
+              case "right":
+                for (let i = x + 1; i < 7; i++) {
+                  const reachedTile = this.tiles[i][y];
+                  if (reachedTile.piece == null) {
+                    possibleTiles.push(reachedTile);
+                  } else if (reachedTile.piece.owner != piece.owner) {
+                    possibleTiles.push(reachedTile);
+                    break;
+                  } else {
+                    break;
+                  }
+                }
+                break;
+      
+              default:
+                break;
+            }
+          });
+      
+          return possibleTiles;
+        };
+      */
         this.movePiece = function (piece, newTile) {
             console.log(piece.x);
             var oldTile = _this.tiles[piece.x - 1][piece.y - 1];
