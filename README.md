@@ -48,3 +48,7 @@ Many personal problems rose up after moving, so I haven't had any motivation to 
 ## 18.08; Time moves fast
 
 I feel like I just started with chess, but an entire week has already passed. Was on holiday in Sarpsbord, which was nice for relaxation. Not as nice for my game. Implemented moving pieces today, which was more difficult than expected. I had to really break down the different gamestate and how I would progress to each one. As mnay problems this came down to thinking about what possible inputs there were, and finding out what output to expect. It is still a little buggy, but that is a problem for future me.
+
+## 20.08; Continuing with chess
+
+Today I have coded in most of the chesspieces' movements. The only ones I miss are pawns and castling. I thought I was almost done earlier today, but then I remembered the 90/90 rule; when you think you are 90% done with a project, 90% remains. The moves I haven't implemented yet are the hard ones, and I have not started checking for cheks or winconditions yet. Additionally, I am considering continuing this project by creating a server I can host myself that will enable online play. Still, I am happy with today's progress
