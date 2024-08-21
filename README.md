@@ -52,3 +52,7 @@ I feel like I just started with chess, but an entire week has already passed. Wa
 ## 20.08; Continuing with chess
 
 Today I have coded in most of the chesspieces' movements. The only ones I miss are pawns and castling. I thought I was almost done earlier today, but then I remembered the 90/90 rule; when you think you are 90% done with a project, 90% remains. The moves I haven't implemented yet are the hard ones, and I have not started checking for cheks or winconditions yet. Additionally, I am considering continuing this project by creating a server I can host myself that will enable online play. Still, I am happy with today's progress
+
+## 21.08; Drawing chesspieces
+
+I have started drawing chess pieces, so every one of them doesn't look the same. This turned out to be both easier and harder than I thought it would be. I am happy with the rook, because it looks a bit cartoonish. Still, most of the pieces remain. I also got the image drawing in the canvas working, but had to ignore typescript in one line. I will try to find a method for not doing this, but it works at the moment. I have set up an error that will pop up if something goes wrong, which I think justifies ignoring TypeScript for that one line until I know how to check the type of an html element.
