@@ -23,6 +23,7 @@ var Knight = /** @class */ (function (_super) {
     function Knight(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
         _this.movementRules = (0, movementRules_1.getKnightMoves)();
+        _this.spriteName = "knight";
         return _this;
     }
     return Knight;

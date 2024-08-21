@@ -12,5 +12,6 @@ export class Knight extends ChessPiece {
   ) {
     super(x, y, color, borderColor, boardSize, owner);
     this.movementRules = getKnightMoves();
+    this.spriteName = "knight";
   }
 }

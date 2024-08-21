@@ -23,6 +23,7 @@ var Rook = /** @class */ (function (_super) {
     function Rook(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
         _this.movementRules = (0, movementRules_1.getRookMoves)();
+        _this.spriteName = "rook";
         return _this;
     }
     return Rook;

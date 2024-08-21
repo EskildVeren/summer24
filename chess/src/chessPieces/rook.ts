@@ -12,5 +12,6 @@ export class Rook extends ChessPiece {
   ) {
     super(x, y, color, borderColor, boardSize, owner);
     this.movementRules = getRookMoves();
+    this.spriteName = "rook";
   }
 }
