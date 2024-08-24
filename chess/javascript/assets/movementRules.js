@@ -191,6 +191,12 @@ var getKnightMoves = function () {
 };
 exports.getKnightMoves = getKnightMoves;
 var getPawnMoves = function () {
-    return (0, exports.getRookMoves)();
+    // Fillermove for pawns
+    var firstAttack = {
+        xModifier: 0,
+        yModifier: 0,
+        repeating: false,
+    };
+    return [firstAttack];
 };
 exports.getPawnMoves = getPawnMoves;

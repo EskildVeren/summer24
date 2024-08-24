@@ -4,6 +4,7 @@ exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
 var getPieceType_1 = require("../assets/getPieceType");
 var returnValidMoves_1 = require("../assets/returnValidMoves");
+var pawn_1 = require("../chessPieces/pawn");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
     function ChessBoard(pixelSize) {
@@ -109,13 +110,14 @@ var ChessBoard = /** @class */ (function () {
         };
       */
         this.movePiece = function (piece, newTile) {
-            console.log(piece.x);
             var oldTile = _this.tiles[piece.x][piece.y];
             oldTile.piece = null;
             newTile.piece = piece;
             piece.x = newTile.x;
             piece.y = newTile.y;
-            // console.log("New piece position:", piece);
+            if (piece instanceof pawn_1.Pawn && piece.firstMove == true) {
+                piece.firstMove = false;
+            }
         };
         this.pixelSize = pixelSize;
         this.tiles = [];

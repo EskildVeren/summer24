@@ -8,6 +8,7 @@ import {
 } from "../assets/colors";
 import { getPieceType } from "../assets/getPieceType";
 import { returnValidMoves } from "../assets/returnValidMoves";
+import { Pawn } from "../chessPieces/pawn";
 import { Rook } from "../chessPieces/rook";
 import { ChessPiece } from "./chessPiece";
 import { Tile } from "./chessTile";
@@ -144,14 +145,15 @@ export class ChessBoard {
 */
 
   movePiece = (piece: ChessPiece, newTile: Tile) => {
-    console.log(piece.x);
-
     const oldTile = this.tiles[piece.x][piece.y];
     oldTile.piece = null;
     newTile.piece = piece;
     piece.x = newTile.x;
     piece.y = newTile.y;
-    // console.log("New piece position:", piece);
+
+    if (piece instanceof Pawn && piece.firstMove == true) {
+      piece.firstMove = false;
+    }
   };
 }
 

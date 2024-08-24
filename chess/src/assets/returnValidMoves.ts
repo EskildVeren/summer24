@@ -1,3 +1,4 @@
+import { Pawn } from "../chessPieces/pawn";
 import { ChessPiece } from "../gameObjects/chessPiece";
 import { Tile } from "../gameObjects/chessTile";
 
@@ -17,6 +18,49 @@ export function returnValidMoves(
   const startY = piece.y;
   let multiplier = 0;
   let repeating = true;
+  console.log(piece.constructor.name);
+
+  if (piece instanceof Pawn) {
+    // Handling the movement of the pawn forwards
+    let direction = piece.direction;
+    let movesForward = 1;
+    if (piece.firstMove == true) {
+      movesForward = 2;
+    }
+    for (let i = 1; i <= movesForward; i++) {
+      const x = startX;
+      const y = startY + i * direction;
+
+      if (y <= 7 && y >= 0) {
+        const reachedTile = tiles[x][y];
+
+        if (reachedTile.piece == null) {
+          possibleTiles.push(reachedTile);
+        }
+      }
+    }
+
+    // Handling pawn attacks
+    for (let i = -1; i <= 1; i += 2) {
+      const x = startX + i;
+      const y = startY + direction;
+
+      if (x <= 7 && x >= 0) {
+        console.log(x);
+
+        const reachedTile = tiles[x][y];
+
+        if (
+          reachedTile.piece != null &&
+          reachedTile.piece.owner != piece.owner
+        ) {
+          possibleTiles.push(reachedTile);
+        }
+      }
+    }
+
+    return possibleTiles;
+  }
 
   while (repeating) {
     repeating = movementRule.repeating;

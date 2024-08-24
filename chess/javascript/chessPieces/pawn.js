@@ -22,8 +22,18 @@ var Pawn = /** @class */ (function (_super) {
     __extends(Pawn, _super);
     function Pawn(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
-        _this.movementRules = (0, movementRules_1.getPawnMoves)();
         _this.spriteName = "pawn";
+        _this.firstMove = true;
+        _this.movementRules = (0, movementRules_1.getPawnMoves)();
+        if (y == 1) {
+            _this.direction = 1;
+        }
+        else if (y == 6) {
+            _this.direction = -1;
+        }
+        else {
+            throw new Error("Pawn constructed with y = ".concat(y, " is not supported"));
+        }
         return _this;
     }
     return Pawn;

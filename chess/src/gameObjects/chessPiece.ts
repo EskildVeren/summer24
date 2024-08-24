@@ -69,7 +69,6 @@ export class ChessPiece {
       pieceSize,
       pieceSize
     );
-    console.log("image drawn");
   };
 
   mark = (

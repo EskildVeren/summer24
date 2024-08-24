@@ -194,5 +194,12 @@ export const getKnightMoves = () => {
 };
 
 export const getPawnMoves = () => {
-  return getRookMoves();
+  // Fillermove for pawns
+  const firstAttack: movementRule = {
+    xModifier: 0,
+    yModifier: 0,
+    repeating: false,
+  };
+
+  return [firstAttack];
 };

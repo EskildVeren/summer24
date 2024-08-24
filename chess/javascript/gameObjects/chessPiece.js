@@ -38,7 +38,6 @@ var ChessPiece = /** @class */ (function () {
             ctx.drawImage(
             // @ts-ignore
             img, tileWidth * _this.x + (tileWidth - pieceSize) / 2, tileWidth * _this.y + (tileWidth - pieceSize) / 2, pieceSize, pieceSize);
-            console.log("image drawn");
         };
         this.mark = function (ctx, mainColor, borderColor) {
             ctx.fillStyle = _this.color;
