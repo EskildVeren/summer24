@@ -56,3 +56,7 @@ Today I have coded in most of the chesspieces' movements. The only ones I miss a
 ## 21.08; Drawing chesspieces
 
 I have started drawing chess pieces, so every one of them doesn't look the same. This turned out to be both easier and harder than I thought it would be. I am happy with the rook, because it looks a bit cartoonish. Still, most of the pieces remain. I also got the image drawing in the canvas working, but had to ignore typescript in one line. I will try to find a method for not doing this, but it works at the moment. I have set up an error that will pop up if something goes wrong, which I think justifies ignoring TypeScript for that one line until I know how to check the type of an html element.
+
+## 24.08; Finishing all chesspieces
+
+Today, I finished drawing all chesspieces. It actually made the whole game fel better. The chesspieces may not be the most pretty, and the king is a bit tiny, but I think they have a certain charm. There is also an issue that all pieces have the same color, but I will try to fix that once I know why the pieces have such a bad resolution as a SVG
