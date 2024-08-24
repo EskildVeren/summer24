@@ -12,5 +12,6 @@ export class Pawn extends ChessPiece {
   ) {
     super(x, y, color, borderColor, boardSize, owner);
     this.movementRules = getPawnMoves();
+    this.spriteName = "pawn";
   }
 }

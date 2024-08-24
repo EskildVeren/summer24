@@ -12,5 +12,6 @@ export class Bishop extends ChessPiece {
   ) {
     super(x, y, color, borderColor, boardSize, owner);
     this.movementRules = getBishopMoves();
+    this.spriteName = "bishop";
   }
 }

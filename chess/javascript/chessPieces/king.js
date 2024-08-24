@@ -23,6 +23,7 @@ var King = /** @class */ (function (_super) {
     function King(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
         _this.movementRules = (0, movementRules_1.getKingMoves)();
+        _this.spriteName = "king";
         return _this;
     }
     return King;

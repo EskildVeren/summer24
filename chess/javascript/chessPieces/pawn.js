@@ -23,6 +23,7 @@ var Pawn = /** @class */ (function (_super) {
     function Pawn(x, y, color, borderColor, boardSize, owner) {
         var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
         _this.movementRules = (0, movementRules_1.getPawnMoves)();
+        _this.spriteName = "pawn";
         return _this;
     }
     return Pawn;
