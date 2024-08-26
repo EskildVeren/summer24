@@ -64,3 +64,7 @@ Today, I finished drawing all chesspieces. It actually made the whole game fel b
 ## 24.08 Part 2; Pawns are complicated
 
 Title says it; Pawns are a hell to program. After an hour and a half, I have finally gotten it to work (a bug came to mind while writing that sentence. It is now fixed). I have to slep on how I want to implement en passant, and I will probably need to rewrite some of my code from this evening (I am not happy with the way two of my if-sentences were nested). It is now 23:56, and I will therefore sleep on it. OH MY GOD HOW AM I GOING TO DO PAWN PROMOTIONS ON A HTML CANVAS!!!!!!!
+
+## 26.08; Making two different colors of pieces
+
+Finally, I have both black and white pieces again. After a lot of reasearch, trial and error, I decided to drop SVGs in favor og PNGs. I also merged all pieces of the same color into one file, in order to make color changes easier.
