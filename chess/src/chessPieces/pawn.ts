@@ -11,12 +11,14 @@ export class Pawn extends ChessPiece {
     color: string,
     borderColor: string,
     boardSize: number,
-    owner: string
+    owner: string,
+    spritesheetName: string
   ) {
-    super(x, y, color, borderColor, boardSize, owner);
-    this.spriteName = "pawn";
+    super(x, y, color, borderColor, boardSize, owner, spritesheetName);
     this.firstMove = true;
     this.movementRules = getPawnMoves();
+    this.spriteX = 0;
+    this.spriteY = 0;
 
     if (y == 1) {
       this.direction = 1;

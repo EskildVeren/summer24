@@ -8,10 +8,12 @@ export class Rook extends ChessPiece {
     color: string,
     borderColor: string,
     boardSize: number,
-    owner: string
+    owner: string,
+    spritesheetName: string
   ) {
-    super(x, y, color, borderColor, boardSize, owner);
+    super(x, y, color, borderColor, boardSize, owner, spritesheetName);
     this.movementRules = getRookMoves();
-    this.spriteName = "rook";
+    this.spriteX = 200;
+    this.spriteY = 0;
   }
 }

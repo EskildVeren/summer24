@@ -20,11 +20,12 @@ var movementRules_1 = require("../assets/movementRules");
 var chessPiece_1 = require("../gameObjects/chessPiece");
 var Pawn = /** @class */ (function (_super) {
     __extends(Pawn, _super);
-    function Pawn(x, y, color, borderColor, boardSize, owner) {
-        var _this = _super.call(this, x, y, color, borderColor, boardSize, owner) || this;
-        _this.spriteName = "pawn";
+    function Pawn(x, y, color, borderColor, boardSize, owner, spritesheetName) {
+        var _this = _super.call(this, x, y, color, borderColor, boardSize, owner, spritesheetName) || this;
         _this.firstMove = true;
         _this.movementRules = (0, movementRules_1.getPawnMoves)();
+        _this.spriteX = 0;
+        _this.spriteY = 0;
         if (y == 1) {
             _this.direction = 1;
         }

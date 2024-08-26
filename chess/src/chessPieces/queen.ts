@@ -8,10 +8,12 @@ export class Queen extends ChessPiece {
     color: string,
     borderColor: string,
     boardSize: number,
-    owner: string
+    owner: string,
+    spritesheetName: string
   ) {
-    super(x, y, color, borderColor, boardSize, owner);
+    super(x, y, color, borderColor, boardSize, owner, spritesheetName);
     this.movementRules = getQueenMoves();
-    this.spriteName = "queen";
+    this.spriteX = 0;
+    this.spriteY = 400;
   }
 }

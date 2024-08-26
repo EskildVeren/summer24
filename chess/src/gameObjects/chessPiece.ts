@@ -9,7 +9,9 @@ export class ChessPiece {
   boardSize: number;
   movementRules: movementRule[];
   owner: string;
-  spriteName: string;
+  spritesheetName: string;
+  spriteX: number;
+  spriteY: number;
 
   constructor(
     x: number,
@@ -17,7 +19,8 @@ export class ChessPiece {
     color: string,
     borderColor: string,
     boardSize: number,
-    owner: string
+    owner: string,
+    spritesheetName: string
   ) {
     this.x = x;
     this.y = y;
@@ -25,45 +28,30 @@ export class ChessPiece {
     this.borderColor = borderColor;
     this.boardSize = boardSize;
     this.movementRules = getRookMoves();
-    this.spriteName = "rook";
+    this.spritesheetName = spritesheetName;
     this.owner = owner;
+    this.spriteX = 0;
+    this.spriteY = 0;
   }
   draw = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = this.color;
-    const pieceSize = 70;
     const tileWidth = this.boardSize / 8;
-    const pieceBorderSize = 2;
+    const pieceSize = tileWidth - 15;
 
-    /*
-    // Drawing the piece's border
-    ctx.fillStyle = this.borderColor;
-    ctx.fillRect(
-      tileWidth * this.x + (tileWidth - pieceSize) / 2 - pieceBorderSize,
-      tileWidth * this.y + (tileWidth - pieceSize) / 2 - pieceBorderSize,
-      pieceSize + pieceBorderSize * 2,
-      pieceSize + pieceBorderSize * 2
-    );
-
-    // Drawing the piece itself
-    ctx.fillStyle = this.color;
-    ctx.fillRect(
-      tileWidth * this.x + (tileWidth - pieceSize) / 2,
-      tileWidth * this.y + (tileWidth - pieceSize) / 2,
-      pieceSize,
-      pieceSize
-    );
-
-    */
-    let img = document.getElementById(this.spriteName);
+    let img = document.getElementById(this.spritesheetName);
 
     if (img == null) {
-      throw new Error(`image ${this.spriteName} not found`);
+      throw new Error(`image ${this.spritesheetName} not found`);
     }
 
     // img.src = this.spritePath;
     ctx.drawImage(
       // @ts-ignore
       img,
+      this.spriteX,
+      this.spriteY,
+      200,
+      200,
       tileWidth * this.x + (tileWidth - pieceSize) / 2,
       tileWidth * this.y + (tileWidth - pieceSize) / 2,
       pieceSize,
