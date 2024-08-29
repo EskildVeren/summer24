@@ -68,3 +68,7 @@ Title says it; Pawns are a hell to program. After an hour and a half, I have fin
 ## 26.08; Making two different colors of pieces
 
 Finally, I have both black and white pieces again. After a lot of reasearch, trial and error, I decided to drop SVGs in favor og PNGs. I also merged all pieces of the same color into one file, in order to make color changes easier.
+
+## 29.08; Prettier ain't only a blessing
+
+I finally found a way to remove my one ts-ignore. It turns out that the code I wrote was corrected by Prettier, making it so it didn't work. At last, my code is ts-ignore free <3
