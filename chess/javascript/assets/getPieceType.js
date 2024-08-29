@@ -23,22 +23,22 @@ var getPieceType = function (x, y, boardSize) {
         return null;
     }
     if (y === 1 || y === 6) {
-        return new pawn_1.Pawn(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new pawn_1.Pawn(x, y, boardSize, owner, spritesheetName);
     }
     if (x == 0 || x == 7) {
-        return new rook_1.Rook(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new rook_1.Rook(x, y, boardSize, owner, spritesheetName);
     }
     if (x == 1 || x == 6) {
-        return new knight_1.Knight(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new knight_1.Knight(x, y, boardSize, owner, spritesheetName);
     }
     if (x == 2 || x == 5) {
-        return new bishop_1.Bishop(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new bishop_1.Bishop(x, y, boardSize, owner, spritesheetName);
     }
     if (x == 3) {
-        return new queen_1.Queen(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new queen_1.Queen(x, y, boardSize, owner, spritesheetName);
     }
     if (x == 4) {
-        return new king_1.King(x, y, mainColor, borderColor, boardSize, owner, spritesheetName);
+        return new king_1.King(x, y, boardSize, owner, spritesheetName);
     }
     throw new Error("Chesspiece outside defined piece-space");
 };

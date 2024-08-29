@@ -8,7 +8,6 @@ function returnValidMoves(piece, movementRule, tiles) {
     var startY = piece.y;
     var multiplier = 0;
     var repeating = true;
-    console.log(piece.constructor.name);
     if (piece instanceof pawn_1.Pawn) {
         // Handling the movement of the pawn forwards
         var direction = piece.direction;
@@ -31,7 +30,6 @@ function returnValidMoves(piece, movementRule, tiles) {
             var x = startX + i;
             var y = startY + direction;
             if (x <= 7 && x >= 0) {
-                console.log(x);
                 var reachedTile = tiles[x][y];
                 if (reachedTile.piece != null &&
                     reachedTile.piece.owner != piece.owner) {

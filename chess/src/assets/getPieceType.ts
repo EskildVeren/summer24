@@ -27,70 +27,22 @@ export const getPieceType = (x: number, y: number, boardSize: number) => {
     return null;
   }
   if (y === 1 || y === 6) {
-    return new Pawn(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new Pawn(x, y, boardSize, owner, spritesheetName);
   }
   if (x == 0 || x == 7) {
-    return new Rook(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new Rook(x, y, boardSize, owner, spritesheetName);
   }
   if (x == 1 || x == 6) {
-    return new Knight(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new Knight(x, y, boardSize, owner, spritesheetName);
   }
   if (x == 2 || x == 5) {
-    return new Bishop(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new Bishop(x, y, boardSize, owner, spritesheetName);
   }
   if (x == 3) {
-    return new Queen(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new Queen(x, y, boardSize, owner, spritesheetName);
   }
   if (x == 4) {
-    return new King(
-      x,
-      y,
-      mainColor,
-      borderColor,
-      boardSize,
-      owner,
-      spritesheetName
-    );
+    return new King(x, y, boardSize, owner, spritesheetName);
   }
   throw new Error("Chesspiece outside defined piece-space");
 };

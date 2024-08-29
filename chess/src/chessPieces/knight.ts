@@ -5,13 +5,11 @@ export class Knight extends ChessPiece {
   constructor(
     x: number,
     y: number,
-    color: string,
-    borderColor: string,
     boardSize: number,
     owner: string,
     spritesheetName: string
   ) {
-    super(x, y, color, borderColor, boardSize, owner, spritesheetName);
+    super(x, y, boardSize, owner, spritesheetName);
     this.movementRules = getKnightMoves();
     this.spriteX = 0;
     this.spriteY = 200;

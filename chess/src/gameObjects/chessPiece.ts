@@ -1,52 +1,47 @@
 import { getRookMoves } from "../assets/movementRules";
 import { movementRule } from "../assets/returnValidMoves";
+import { Tile } from "./chessTile";
 
 export class ChessPiece {
   x: number;
   y: number;
-  color: string;
-  borderColor: string;
   boardSize: number;
   movementRules: movementRule[];
   owner: string;
   spritesheetName: string;
   spriteX: number;
   spriteY: number;
+  validMoves: Tile[];
 
   constructor(
     x: number,
     y: number,
-    color: string,
-    borderColor: string,
     boardSize: number,
     owner: string,
     spritesheetName: string
   ) {
     this.x = x;
     this.y = y;
-    this.color = color;
-    this.borderColor = borderColor;
     this.boardSize = boardSize;
     this.movementRules = getRookMoves();
     this.spritesheetName = spritesheetName;
     this.owner = owner;
     this.spriteX = 0;
     this.spriteY = 0;
+    this.validMoves = [];
   }
   draw = (ctx: CanvasRenderingContext2D) => {
-    ctx.fillStyle = this.color;
     const tileWidth = this.boardSize / 8;
     const pieceSize = tileWidth - 15;
 
     let img = document.getElementById(this.spritesheetName);
 
-    if (img == null) {
+    if (img == null || !(img instanceof HTMLImageElement)) {
       throw new Error(`image ${this.spritesheetName} not found`);
     }
 
     // img.src = this.spritePath;
     ctx.drawImage(
-      // @ts-ignore
       img,
       this.spriteX,
       this.spriteY,
@@ -64,7 +59,6 @@ export class ChessPiece {
     mainColor: string,
     borderColor: string
   ) => {
-    ctx.fillStyle = this.color;
     const pieceSize = 70;
     const tileWidth = this.boardSize / 8;
     const pieceBorderSize = 2;
@@ -86,5 +80,9 @@ export class ChessPiece {
       pieceSize,
       pieceSize
     );
+  };
+
+  resetValidMoves = () => {
+    this.validMoves = [];
   };
 }

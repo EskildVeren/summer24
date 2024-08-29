@@ -18,7 +18,6 @@ export function returnValidMoves(
   const startY = piece.y;
   let multiplier = 0;
   let repeating = true;
-  console.log(piece.constructor.name);
 
   if (piece instanceof Pawn) {
     // Handling the movement of the pawn forwards
@@ -46,8 +45,6 @@ export function returnValidMoves(
       const y = startY + direction;
 
       if (x <= 7 && x >= 0) {
-        console.log(x);
-
         const reachedTile = tiles[x][y];
 
         if (

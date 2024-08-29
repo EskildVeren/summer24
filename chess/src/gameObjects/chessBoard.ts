@@ -54,9 +54,7 @@ export class ChessBoard {
     let possibleTiles: Tile[] = [];
     const movementRules = piece.movementRules;
     movementRules.forEach((movementRule) => {
-      returnValidMoves(piece, movementRule, this.tiles).forEach((tile) => {
-        possibleTiles.push(tile);
-      });
+      possibleTiles.push(...returnValidMoves(piece, movementRule, this.tiles));
     });
     return possibleTiles;
   };

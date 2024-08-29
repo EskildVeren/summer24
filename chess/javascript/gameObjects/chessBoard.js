@@ -20,9 +20,7 @@ var ChessBoard = /** @class */ (function () {
             var possibleTiles = [];
             var movementRules = piece.movementRules;
             movementRules.forEach(function (movementRule) {
-                (0, returnValidMoves_1.returnValidMoves)(piece, movementRule, _this.tiles).forEach(function (tile) {
-                    possibleTiles.push(tile);
-                });
+                possibleTiles.push.apply(possibleTiles, (0, returnValidMoves_1.returnValidMoves)(piece, movementRule, _this.tiles));
             });
             return possibleTiles;
         };
