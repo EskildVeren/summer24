@@ -72,3 +72,7 @@ Finally, I have both black and white pieces again. After a lot of reasearch, tri
 ## 29.08; Prettier ain't only a blessing
 
 I finally found a way to remove my one ts-ignore. It turns out that the code I wrote was corrected by Prettier, making it so it didn't work. At last, my code is ts-ignore free <3
+
+## 30.08; Checks are now a thing
+
+I can now check for checks. THe solution was not pretty, but I am getting kinda tired of programming chess. I think what's missing now only is en passant, promotions, castling and actually being able to win this game
