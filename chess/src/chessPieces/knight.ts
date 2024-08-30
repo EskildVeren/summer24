@@ -1,5 +1,6 @@
 import { getKnightMoves } from "../assets/movementRules";
 import { ChessPiece } from "../gameObjects/chessPiece";
+import { Tile } from "../gameObjects/chessTile";
 
 export class Knight extends ChessPiece {
   constructor(
@@ -7,9 +8,10 @@ export class Knight extends ChessPiece {
     y: number,
     boardSize: number,
     owner: string,
-    spritesheetName: string
+    spritesheetName: string,
+    tile: Tile
   ) {
-    super(x, y, boardSize, owner, spritesheetName);
+    super(x, y, boardSize, owner, spritesheetName, tile);
     this.movementRules = getKnightMoves();
     this.spriteX = 0;
     this.spriteY = 200;

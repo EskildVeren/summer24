@@ -21,9 +21,9 @@ canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 // Initiate game objects
 var board = new chessBoard_1.ChessBoard(800);
+board.calculateValidMoves();
 var clickedPiece = null;
 var clickedTile = null;
-var markedTiles = [];
 var markedPiece;
 var states = {
     base: "base",
@@ -49,29 +49,36 @@ canvas.addEventListener("click", function (e) {
     var yCord = Math.floor(mouseY / tileWidth);
     clickedTile = board.tiles[xCord][yCord];
     clickedPiece = clickedTile.piece;
+    // If a tile containing a piece that can move is clicked
     if (clickedPiece != null && clickedPiece.owner == gameState.playerTurn) {
         markedPiece = clickedPiece;
         gameState.state = states.showPossibleMoves;
-        markedTiles = board.newGetValidMoves(clickedPiece);
-        markedTiles.forEach(function (tile) {
+        clickedPiece.validMoves.forEach(function (tile) {
             tile.mark(ctx, "blue");
         });
+        // Else if a valid move is clicked
     }
-    else if (markedTiles.includes(clickedTile) && markedPiece != null) {
+    else if (markedPiece != null &&
+        //clickedPiece != null &&
+        markedPiece.validMoves.includes(clickedTile)) {
         gameState.state = states.movePiece;
-        markedTiles = [];
-        board.movePiece(markedPiece, clickedTile);
-        main();
-        if (gameState.playerTurn == "white") {
-            gameState.playerTurn = "black";
-        }
-        else {
-            gameState.playerTurn = "white";
+        var pieceMoved = board.movePiece(markedPiece, clickedTile);
+        //console.log(board.movePiece(markedPiece, clickedTile));
+        //board.calculateValidMoves(ctx);
+        console.log(pieceMoved);
+        if (pieceMoved === true) {
+            main();
+            if (gameState.playerTurn == "white") {
+                gameState.playerTurn = "black";
+            }
+            else {
+                gameState.playerTurn = "white";
+            }
         }
     }
+    // If no valid move was chosen
     else {
         gameState.state = states.base;
-        markedTiles = [];
         markedPiece = null;
     }
     console.log(gameState.state);

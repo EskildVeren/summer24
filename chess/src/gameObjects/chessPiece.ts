@@ -12,13 +12,15 @@ export class ChessPiece {
   spriteX: number;
   spriteY: number;
   validMoves: Tile[];
+  tile: Tile;
 
   constructor(
     x: number,
     y: number,
     boardSize: number,
     owner: string,
-    spritesheetName: string
+    spritesheetName: string,
+    tile: Tile
   ) {
     this.x = x;
     this.y = y;
@@ -29,6 +31,7 @@ export class ChessPiece {
     this.spriteX = 0;
     this.spriteY = 0;
     this.validMoves = [];
+    this.tile = tile;
   }
   draw = (ctx: CanvasRenderingContext2D) => {
     const tileWidth = this.boardSize / 8;

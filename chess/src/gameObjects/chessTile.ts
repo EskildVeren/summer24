@@ -6,6 +6,7 @@ export class Tile {
   size: number;
   color: string;
   piece: ChessPiece | null;
+  isUnderAttack: Boolean;
 
   constructor(x: number, y: number, size: number, color: string) {
     this.x = x;
@@ -13,6 +14,7 @@ export class Tile {
     this.size = size;
     this.color = color;
     this.piece = null;
+    this.isUnderAttack = false;
   }
   draw = (ctx: CanvasRenderingContext2D) => {
     ctx.fillStyle = this.color;

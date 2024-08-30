@@ -23,6 +23,7 @@ var Tile = /** @class */ (function () {
         this.size = size;
         this.color = color;
         this.piece = null;
+        this.isUnderAttack = false;
     }
     return Tile;
 }());

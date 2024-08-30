@@ -29,9 +29,9 @@ canvas.height = canvasHeight;
 
 // Initiate game objects
 const board = new ChessBoard(800);
+board.calculateValidMoves();
 let clickedPiece: ChessPiece | null = null;
 let clickedTile = null;
-let markedTiles: Tile[] = [];
 let markedPiece: ChessPiece | null;
 const states = {
   base: "base",
@@ -61,26 +61,38 @@ canvas.addEventListener("click", (e) => {
   clickedTile = board.tiles[xCord][yCord];
   clickedPiece = clickedTile.piece;
 
+  // If a tile containing a piece that can move is clicked
   if (clickedPiece != null && clickedPiece.owner == gameState.playerTurn) {
     markedPiece = clickedPiece;
+
     gameState.state = states.showPossibleMoves;
-    markedTiles = board.newGetValidMoves(clickedPiece);
-    markedTiles.forEach((tile: Tile) => {
+    clickedPiece.validMoves.forEach((tile: Tile) => {
       tile.mark(ctx, "blue");
     });
-  } else if (markedTiles.includes(clickedTile) && markedPiece != null) {
+    // Else if a valid move is clicked
+  } else if (
+    markedPiece != null &&
+    //clickedPiece != null &&
+    markedPiece.validMoves.includes(clickedTile)
+  ) {
     gameState.state = states.movePiece;
-    markedTiles = [];
-    board.movePiece(markedPiece, clickedTile);
-    main();
-    if (gameState.playerTurn == "white") {
-      gameState.playerTurn = "black";
-    } else {
-      gameState.playerTurn = "white";
+    const pieceMoved: boolean = board.movePiece(markedPiece, clickedTile);
+    //console.log(board.movePiece(markedPiece, clickedTile));
+    //board.calculateValidMoves(ctx);
+    console.log(pieceMoved);
+
+    if (pieceMoved === true) {
+      main();
+      if (gameState.playerTurn == "white") {
+        gameState.playerTurn = "black";
+      } else {
+        gameState.playerTurn = "white";
+      }
     }
-  } else {
+  }
+  // If no valid move was chosen
+  else {
     gameState.state = states.base;
-    markedTiles = [];
     markedPiece = null;
   }
 

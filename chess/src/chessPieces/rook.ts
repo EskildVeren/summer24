@@ -1,5 +1,6 @@
 import { getRookMoves } from "../assets/movementRules";
 import { ChessPiece } from "../gameObjects/chessPiece";
+import { Tile } from "../gameObjects/chessTile";
 
 export class Rook extends ChessPiece {
   constructor(
@@ -7,9 +8,10 @@ export class Rook extends ChessPiece {
     y: number,
     boardSize: number,
     owner: string,
-    spritesheetName: string
+    spritesheetName: string,
+    tile: Tile
   ) {
-    super(x, y, boardSize, owner, spritesheetName);
+    super(x, y, boardSize, owner, spritesheetName, tile);
     this.movementRules = getRookMoves();
     this.spriteX = 200;
     this.spriteY = 0;

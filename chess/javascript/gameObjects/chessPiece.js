@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessPiece = void 0;
 var movementRules_1 = require("../assets/movementRules");
 var ChessPiece = /** @class */ (function () {
-    function ChessPiece(x, y, boardSize, owner, spritesheetName) {
+    function ChessPiece(x, y, boardSize, owner, spritesheetName, tile) {
         var _this = this;
         this.draw = function (ctx) {
             var tileWidth = _this.boardSize / 8;
@@ -38,6 +38,7 @@ var ChessPiece = /** @class */ (function () {
         this.spriteX = 0;
         this.spriteY = 0;
         this.validMoves = [];
+        this.tile = tile;
     }
     return ChessPiece;
 }());

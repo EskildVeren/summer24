@@ -3,13 +3,13 @@ import { King } from "../chessPieces/king";
 import { Rook } from "../chessPieces/rook";
 import { Tile } from "../gameObjects/chessTile";
 import { movementRule, returnValidMoves } from "./returnValidMoves";
-
+/*
 export function tileIsUnderAttack(tile: Tile, tiles: Tile[][], king: King) {
   const x = tile.x;
   const y = tile.y;
   //const;
   //const rook = new Rook(x, y);
-  const piece = new Bishop(tile.x, tile.y, 800, "white", "spritesheet_white");
+ // const piece = new Bishop(tile.x, tile.y, 800, "white", "spritesheet_white");
   const bishopTiles: Tile[] = [];
   piece.movementRules.forEach((movementRule: movementRule) => {
     bishopTiles.push(...returnValidMoves(piece, movementRule, tiles));
@@ -22,3 +22,4 @@ export function tileIsUnderAttack(tile: Tile, tiles: Tile[][], king: King) {
 
   return false;
 }
+*/

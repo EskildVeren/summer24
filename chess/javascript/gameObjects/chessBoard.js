@@ -4,6 +4,7 @@ exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
 var getPieceType_1 = require("../assets/getPieceType");
 var returnValidMoves_1 = require("../assets/returnValidMoves");
+var king_1 = require("../chessPieces/king");
 var pawn_1 = require("../chessPieces/pawn");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
@@ -16,7 +17,7 @@ var ChessBoard = /** @class */ (function () {
                 }
             }
         };
-        this.newGetValidMoves = function (piece) {
+        this.getMovesForPiece = function (piece) {
             var possibleTiles = [];
             var movementRules = piece.movementRules;
             movementRules.forEach(function (movementRule) {
@@ -24,102 +25,64 @@ var ChessBoard = /** @class */ (function () {
             });
             return possibleTiles;
         };
-        /*
-        getValidMoves = (piece: ChessPiece) => {
-          const possibleTiles: Tile[] = [];
-          const x = piece.x - 1;
-          const y = piece.y - 1;
-          const movementRules = piece.movementRules;
-      
-          movementRules.forEach((movementStyle: string) => {
-            switch (movementStyle.toLowerCase()) {
-              case "rook":
-                this.tiles.forEach((column: Tile[]) => {
-                  possibleTiles.push(column[y]);
+        // Adds all valid tiles to each piece
+        this.calculateValidMoves = function () {
+            // Reset tiles
+            _this.tiles.forEach(function (tileColumn) {
+                tileColumn.forEach(function (tile) {
+                    tile.isUnderAttack = false;
                 });
-      
-                this.tiles[x].forEach((tile: Tile) => {
-                  possibleTiles.push(tile);
-                });
-                break;
-      
-              case "up":
-                for (let i = y - 1; i >= 0; i--) {
-                  const reachedTile = this.tiles[x][i];
-                  if (reachedTile.piece == null) {
-                    possibleTiles.push(reachedTile);
-                  } else if (reachedTile.piece.owner != piece.owner) {
-                    possibleTiles.push(reachedTile);
-                    break;
-                  } else {
-                    break;
-                  }
-                }
-                break;
-      
-              case "down":
-                for (let i = y + 1; i < 7; i++) {
-                  const reachedTile = this.tiles[x][i];
-                  if (reachedTile.piece == null) {
-                    possibleTiles.push(reachedTile);
-                  } else if (reachedTile.piece.owner != piece.owner) {
-                    possibleTiles.push(reachedTile);
-                    break;
-                  } else {
-                    break;
-                  }
-                }
-                break;
-      
-              case "left":
-                for (let i = x - 1; i >= 0; i--) {
-                  const reachedTile = this.tiles[i][y];
-                  if (reachedTile.piece == null) {
-                    possibleTiles.push(reachedTile);
-                  } else if (reachedTile.piece.owner != piece.owner) {
-                    possibleTiles.push(reachedTile);
-                    break;
-                  } else {
-                    break;
-                  }
-                }
-                break;
-      
-              case "right":
-                for (let i = x + 1; i < 7; i++) {
-                  const reachedTile = this.tiles[i][y];
-                  if (reachedTile.piece == null) {
-                    possibleTiles.push(reachedTile);
-                  } else if (reachedTile.piece.owner != piece.owner) {
-                    possibleTiles.push(reachedTile);
-                    break;
-                  } else {
-                    break;
-                  }
-                }
-                break;
-      
-              default:
-                break;
-            }
-          });
-      
-          return possibleTiles;
+            });
+            // Create set for all tiles that are under attack
+            var attackedTiles = new Set();
+            // Add all possible attacks to them
+            _this.pieces.forEach(function (piece) {
+                var validMoves = _this.getMovesForPiece(piece);
+                piece.validMoves = validMoves;
+                attackedTiles = attackedTiles.union(new Set(validMoves));
+            });
+            attackedTiles.forEach(function (tile) {
+                tile.isUnderAttack = true;
+            });
         };
-      */
         this.movePiece = function (piece, newTile) {
             var oldTile = _this.tiles[piece.x][piece.y];
+            var newTilePiece = newTile.piece;
             oldTile.piece = null;
             newTile.piece = piece;
             piece.x = newTile.x;
             piece.y = newTile.y;
+            var wasPawnFirstMove = false;
             if (piece instanceof pawn_1.Pawn && piece.firstMove == true) {
+                wasPawnFirstMove = true;
                 piece.firstMove = false;
             }
+            var pieceMoved = true;
+            _this.calculateValidMoves();
+            // this.calculateValidMoves(new CanvasRenderingContext2D());
+            // checks if check-state is valid
+            _this.kings.forEach(function (king) {
+                if (king.owner == piece.owner && king.tile.isUnderAttack) {
+                    console.log("CHECK");
+                    oldTile.piece = piece;
+                    newTile.piece = newTilePiece;
+                    piece.x = oldTile.x;
+                    piece.y = oldTile.y;
+                    if (piece instanceof pawn_1.Pawn && wasPawnFirstMove) {
+                        piece.firstMove = true;
+                    }
+                    _this.calculateValidMoves();
+                    console.log("I WILL NOW RETURN FALSE");
+                    pieceMoved = false;
+                    //return "FAAALSE";
+                }
+            });
+            return pieceMoved;
         };
         this.pixelSize = pixelSize;
         this.tiles = [];
-        this.heaven = [];
+        this.pieces = [];
+        this.kings = [];
         // Add tiles to the chessboards
         for (var x = 0; x < 8; x++) {
             var tileColumn = [];
@@ -131,7 +94,13 @@ var ChessBoard = /** @class */ (function () {
                 }
                 var tile = new chessTile_1.Tile(x, y, this.pixelSize / 8, color);
                 tileColumn.push(tile);
-                var piece = (0, getPieceType_1.getPieceType)(x, y, this.pixelSize);
+                var piece = (0, getPieceType_1.getPieceType)(x, y, tile, this.pixelSize);
+                if (piece != null) {
+                    this.pieces.push(piece);
+                }
+                if (piece instanceof king_1.King) {
+                    this.kings.push(piece);
+                }
                 tile.piece = piece;
             }
             this.tiles.push(tileColumn);

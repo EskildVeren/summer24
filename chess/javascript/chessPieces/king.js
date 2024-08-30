@@ -20,8 +20,8 @@ var movementRules_1 = require("../assets/movementRules");
 var chessPiece_1 = require("../gameObjects/chessPiece");
 var King = /** @class */ (function (_super) {
     __extends(King, _super);
-    function King(x, y, boardSize, owner, spritesheetName) {
-        var _this = _super.call(this, x, y, boardSize, owner, spritesheetName) || this;
+    function King(x, y, boardSize, owner, spritesheetName, tile) {
+        var _this = _super.call(this, x, y, boardSize, owner, spritesheetName, tile) || this;
         _this.movementRules = (0, movementRules_1.getKingMoves)();
         _this.spriteX = 200;
         _this.spriteY = 400;
