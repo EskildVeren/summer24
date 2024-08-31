@@ -1,4 +1,6 @@
+import { King } from "../chessPieces/king";
 import { Pawn } from "../chessPieces/pawn";
+import { Rook } from "../chessPieces/rook";
 import { ChessPiece } from "../gameObjects/chessPiece";
 import { Tile } from "../gameObjects/chessTile";
 
@@ -84,4 +86,33 @@ export function returnValidMoves(
     }
   }
   return possibleTiles;
+}
+
+export function checkForValidCastlingMove(king: King, tiles: Tile[][]) {
+  if (king.firstMove === false) {
+    return;
+  }
+  const y = king.y;
+  const x0Rook: ChessPiece | null = tiles[0][y].piece;
+  const x7Rook: ChessPiece | null = tiles[7][y].piece;
+
+  if (isValidRook(x0Rook) && tiles[3][y].piece == null) {
+    console.log("king can caste left");
+
+    king.validMoves.push(tiles[2][y]);
+    king.canCastle = true;
+  }
+  if (isValidRook(x7Rook) && tiles[5][y].piece == null) {
+    console.log("king can caste right");
+    king.validMoves.push(tiles[6][y]);
+    king.canCastle = true;
+  }
+  console.log("Castlecheck completed");
+}
+
+function isValidRook(piece: ChessPiece | null) {
+  if (piece instanceof Rook && piece.firstMove == true) {
+    return true;
+  }
+  return false;
 }

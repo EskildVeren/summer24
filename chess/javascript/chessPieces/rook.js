@@ -25,6 +25,7 @@ var Rook = /** @class */ (function (_super) {
         _this.movementRules = (0, movementRules_1.getRookMoves)();
         _this.spriteX = 200;
         _this.spriteY = 0;
+        _this.firstMove = true;
         return _this;
     }
     return Rook;

@@ -21,7 +21,7 @@ canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 // Initiate game objects
 var board = new chessBoard_1.ChessBoard(800);
-board.calculateValidMoves();
+board.calculateValidMoves("white");
 var clickedPiece = null;
 var clickedTile = null;
 var markedPiece;

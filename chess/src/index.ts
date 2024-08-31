@@ -29,7 +29,7 @@ canvas.height = canvasHeight;
 
 // Initiate game objects
 const board = new ChessBoard(800);
-board.calculateValidMoves();
+board.calculateValidMoves("white");
 let clickedPiece: ChessPiece | null = null;
 let clickedTile = null;
 let markedPiece: ChessPiece | null;

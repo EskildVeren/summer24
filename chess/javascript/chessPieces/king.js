@@ -25,6 +25,8 @@ var King = /** @class */ (function (_super) {
         _this.movementRules = (0, movementRules_1.getKingMoves)();
         _this.spriteX = 200;
         _this.spriteY = 400;
+        _this.firstMove = true;
+        _this.canCastle = false;
         return _this;
     }
     return King;

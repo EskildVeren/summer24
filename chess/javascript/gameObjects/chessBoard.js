@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChessBoard = void 0;
 var colors_1 = require("../assets/colors");
 var getPieceType_1 = require("../assets/getPieceType");
+var isCastlingMove_1 = require("../assets/isCastlingMove");
 var returnValidMoves_1 = require("../assets/returnValidMoves");
 var king_1 = require("../chessPieces/king");
 var pawn_1 = require("../chessPieces/pawn");
+var rook_1 = require("../chessPieces/rook");
 var chessTile_1 = require("./chessTile");
 var ChessBoard = /** @class */ (function () {
     function ChessBoard(pixelSize) {
@@ -26,7 +28,7 @@ var ChessBoard = /** @class */ (function () {
             return possibleTiles;
         };
         // Adds all valid tiles to each piece
-        this.calculateValidMoves = function () {
+        this.calculateValidMoves = function (player) {
             // Reset tiles
             _this.tiles.forEach(function (tileColumn) {
                 tileColumn.forEach(function (tile) {
@@ -38,27 +40,55 @@ var ChessBoard = /** @class */ (function () {
             // Add all possible attacks to them
             _this.pieces.forEach(function (piece) {
                 var validMoves = _this.getMovesForPiece(piece);
-                piece.validMoves = validMoves;
-                attackedTiles = attackedTiles.union(new Set(validMoves));
+                if (piece.owner == player) {
+                    piece.validMoves = validMoves;
+                }
+                else {
+                    attackedTiles = attackedTiles.union(new Set(validMoves));
+                }
             });
             attackedTiles.forEach(function (tile) {
                 tile.isUnderAttack = true;
             });
+            (0, returnValidMoves_1.checkForValidCastlingMove)(_this.kings[0], _this.tiles);
+            (0, returnValidMoves_1.checkForValidCastlingMove)(_this.kings[1], _this.tiles);
         };
         this.movePiece = function (piece, newTile) {
             var oldTile = _this.tiles[piece.x][piece.y];
             var newTilePiece = newTile.piece;
+            var pieceMoved = true;
+            var wasPawnFirstMove = false;
+            var movingPlayer = piece.owner;
+            var opposingPlayer = "white";
             oldTile.piece = null;
             newTile.piece = piece;
             piece.x = newTile.x;
             piece.y = newTile.y;
-            var wasPawnFirstMove = false;
-            if (piece instanceof pawn_1.Pawn && piece.firstMove == true) {
+            if (movingPlayer == "white") {
+                opposingPlayer = "black";
+            }
+            if ((piece instanceof pawn_1.Pawn ||
+                piece instanceof king_1.King ||
+                piece instanceof rook_1.Rook) &&
+                piece.firstMove == true) {
                 wasPawnFirstMove = true;
                 piece.firstMove = false;
             }
-            var pieceMoved = true;
-            _this.calculateValidMoves();
+            if ((0, isCastlingMove_1.isCastlingMove)(piece, oldTile, newTile) == "left") {
+                var rook = _this.tiles[0][piece.y].piece;
+                if (rook != null) {
+                    var newRookTile = _this.tiles[3][piece.y];
+                    _this.movePiece(rook, newRookTile);
+                }
+            }
+            if ((0, isCastlingMove_1.isCastlingMove)(piece, oldTile, newTile) == "right") {
+                var rook = _this.tiles[7][piece.y].piece;
+                if (rook != null) {
+                    var newRookTile = _this.tiles[5][piece.y];
+                    _this.movePiece(rook, newRookTile);
+                }
+            }
+            _this.calculateValidMoves(movingPlayer);
             // this.calculateValidMoves(new CanvasRenderingContext2D());
             // checks if check-state is valid
             _this.kings.forEach(function (king) {
@@ -71,12 +101,14 @@ var ChessBoard = /** @class */ (function () {
                     if (piece instanceof pawn_1.Pawn && wasPawnFirstMove) {
                         piece.firstMove = true;
                     }
-                    _this.calculateValidMoves();
+                    _this.calculateValidMoves(movingPlayer);
                     console.log("I WILL NOW RETURN FALSE");
                     pieceMoved = false;
-                    //return "FAAALSE";
                 }
             });
+            if (pieceMoved == true) {
+                _this.calculateValidMoves(opposingPlayer);
+            }
             return pieceMoved;
         };
         this.pixelSize = pixelSize;

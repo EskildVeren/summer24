@@ -1,13 +1,10 @@
-import {
-  pieceBlack,
-  pieceBorderBlack,
-  pieceBorderWhite,
-  pieceWhite,
-  tileBlack,
-  tileWhite,
-} from "../assets/colors";
+import { tileBlack, tileWhite } from "../assets/colors";
 import { getPieceType } from "../assets/getPieceType";
-import { returnValidMoves } from "../assets/returnValidMoves";
+import { isCastlingMove } from "../assets/isCastlingMove";
+import {
+  checkForValidCastlingMove,
+  returnValidMoves,
+} from "../assets/returnValidMoves";
 import { King } from "../chessPieces/king";
 import { Pawn } from "../chessPieces/pawn";
 import { Rook } from "../chessPieces/rook";
@@ -76,7 +73,7 @@ export class ChessBoard {
   };
 
   // Adds all valid tiles to each piece
-  calculateValidMoves = () => {
+  calculateValidMoves = (player: string) => {
     // Reset tiles
     this.tiles.forEach((tileColumn: Tile[]) => {
       tileColumn.forEach((tile: Tile) => {
@@ -89,32 +86,65 @@ export class ChessBoard {
     // Add all possible attacks to them
     this.pieces.forEach((piece: ChessPiece) => {
       const validMoves = this.getMovesForPiece(piece);
-      piece.validMoves = validMoves;
-      attackedTiles = attackedTiles.union(new Set(validMoves));
+      if (piece.owner == player) {
+        piece.validMoves = validMoves;
+      } else {
+        attackedTiles = attackedTiles.union(new Set(validMoves));
+      }
     });
 
     attackedTiles.forEach((tile: Tile) => {
       tile.isUnderAttack = true;
     });
+
+    checkForValidCastlingMove(this.kings[0], this.tiles);
+    checkForValidCastlingMove(this.kings[1], this.tiles);
   };
 
   movePiece = (piece: ChessPiece, newTile: Tile) => {
     const oldTile = this.tiles[piece.x][piece.y];
     const newTilePiece = newTile.piece;
+    let pieceMoved = true;
+    let wasPawnFirstMove = false;
+    const movingPlayer = piece.owner;
+    let opposingPlayer = "white";
+
     oldTile.piece = null;
     newTile.piece = piece;
     piece.x = newTile.x;
     piece.y = newTile.y;
-    let wasPawnFirstMove = false;
 
-    if (piece instanceof Pawn && piece.firstMove == true) {
+    if (movingPlayer == "white") {
+      opposingPlayer = "black";
+    }
+
+    if (
+      (piece instanceof Pawn ||
+        piece instanceof King ||
+        piece instanceof Rook) &&
+      piece.firstMove == true
+    ) {
       wasPawnFirstMove = true;
       piece.firstMove = false;
     }
 
-    let pieceMoved = true;
+    if (isCastlingMove(piece, oldTile, newTile) == "left") {
+      const rook = this.tiles[0][piece.y].piece;
+      if (rook != null) {
+        const newRookTile = this.tiles[3][piece.y];
+        this.movePiece(rook, newRookTile);
+      }
+    }
 
-    this.calculateValidMoves();
+    if (isCastlingMove(piece, oldTile, newTile) == "right") {
+      const rook = this.tiles[7][piece.y].piece;
+      if (rook != null) {
+        const newRookTile = this.tiles[5][piece.y];
+        this.movePiece(rook, newRookTile);
+      }
+    }
+
+    this.calculateValidMoves(movingPlayer);
     // this.calculateValidMoves(new CanvasRenderingContext2D());
     // checks if check-state is valid
     this.kings.forEach((king: King) => {
@@ -130,13 +160,16 @@ export class ChessBoard {
           piece.firstMove = true;
         }
 
-        this.calculateValidMoves();
+        this.calculateValidMoves(movingPlayer);
 
         console.log("I WILL NOW RETURN FALSE");
         pieceMoved = false;
-        //return "FAAALSE";
       }
     });
+
+    if (pieceMoved == true) {
+      this.calculateValidMoves(opposingPlayer);
+    }
 
     return pieceMoved;
   };

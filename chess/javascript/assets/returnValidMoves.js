@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.returnValidMoves = returnValidMoves;
+exports.checkForValidCastlingMove = checkForValidCastlingMove;
 var pawn_1 = require("../chessPieces/pawn");
+var rook_1 = require("../chessPieces/rook");
 function returnValidMoves(piece, movementRule, tiles) {
     var possibleTiles = [];
     var startX = piece.x;
@@ -63,4 +65,29 @@ function returnValidMoves(piece, movementRule, tiles) {
         }
     }
     return possibleTiles;
+}
+function checkForValidCastlingMove(king, tiles) {
+    if (king.firstMove === false) {
+        return;
+    }
+    var y = king.y;
+    var x0Rook = tiles[0][y].piece;
+    var x7Rook = tiles[7][y].piece;
+    if (isValidRook(x0Rook) && tiles[3][y].piece == null) {
+        console.log("king can caste left");
+        king.validMoves.push(tiles[2][y]);
+        king.canCastle = true;
+    }
+    if (isValidRook(x7Rook) && tiles[5][y].piece == null) {
+        console.log("king can caste right");
+        king.validMoves.push(tiles[6][y]);
+        king.canCastle = true;
+    }
+    console.log("Castlecheck completed");
+}
+function isValidRook(piece) {
+    if (piece instanceof rook_1.Rook && piece.firstMove == true) {
+        return true;
+    }
+    return false;
 }
