@@ -76,3 +76,7 @@ I finally found a way to remove my one ts-ignore. It turns out that the code I w
 ## 30.08; Checks are now a thing
 
 I can now check for checks. THe solution was not pretty, but I am getting kinda tired of programming chess. I think what's missing now only is en passant, promotions, castling and actually being able to win this game
+
+## 31.08; Castling is implemented (kinda)
+
+I am almost finished with castling. All that is left is checking for whether all tiles between the rook and the king (including the king's tile) are in check. I feel like a lot of the programming after drawing the pieces has ben kinda tiresome, but stil a lot of fun. It is like solving a puzzle, where I am punished/rewarding based on how I solved all the previous puzzles. Still, I can't wait to complete this project. There are many stones in my graveyard of uncompleted projects, but hopefully, this chessgame wont be included in that pile.
