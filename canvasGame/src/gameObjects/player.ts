@@ -102,7 +102,7 @@ export class Player {
   shootProjetile = (projectileList: Entity[]) => {
     const projectile = new PlayerProjectile(
       this.ctx,
-      this.x + this.width / 2,
+      this.x,
       this.y + this.height / 2,
       -5
     );

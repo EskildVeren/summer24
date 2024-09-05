@@ -64,7 +64,7 @@ var Player = /** @class */ (function () {
             }
         };
         this.shootProjetile = function (projectileList) {
-            var projectile = new playerProjectile_1.PlayerProjectile(_this.ctx, _this.x + _this.width / 2, _this.y + _this.height / 2, -5);
+            var projectile = new playerProjectile_1.PlayerProjectile(_this.ctx, _this.x, _this.y + _this.height / 2, -5);
             projectileList.push(projectile);
         };
         this.x = x;
