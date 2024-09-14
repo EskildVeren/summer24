@@ -67,18 +67,19 @@ function returnValidMoves(piece, movementRule, tiles) {
     return possibleTiles;
 }
 function checkForValidCastlingMove(king, tiles) {
+    king.canCastle = false;
     if (king.firstMove === false) {
         return;
     }
     var y = king.y;
     var x0Rook = tiles[0][y].piece;
     var x7Rook = tiles[7][y].piece;
-    if (isValidRook(x0Rook) && tiles[3][y].piece == null) {
+    if (isValidRook(x0Rook) && allTheseTilesAreValid(tiles, 1, 3, y)) {
         console.log("king can caste left");
         king.validMoves.push(tiles[2][y]);
         king.canCastle = true;
     }
-    if (isValidRook(x7Rook) && tiles[5][y].piece == null) {
+    if (isValidRook(x7Rook) && allTheseTilesAreValid(tiles, 5, 6, y)) {
         console.log("king can caste right");
         king.validMoves.push(tiles[6][y]);
         king.canCastle = true;
@@ -90,4 +91,13 @@ function isValidRook(piece) {
         return true;
     }
     return false;
+}
+function allTheseTilesAreValid(tiles, startX, endX, y) {
+    for (var x = startX; x <= endX; x++) {
+        var tile = tiles[x][y];
+        if (tile.isUnderAttack || tile.piece != null) {
+            return false;
+        }
+    }
+    return true;
 }

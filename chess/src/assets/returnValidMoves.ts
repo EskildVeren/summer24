@@ -89,6 +89,7 @@ export function returnValidMoves(
 }
 
 export function checkForValidCastlingMove(king: King, tiles: Tile[][]) {
+  king.canCastle = false;
   if (king.firstMove === false) {
     return;
   }
@@ -96,13 +97,13 @@ export function checkForValidCastlingMove(king: King, tiles: Tile[][]) {
   const x0Rook: ChessPiece | null = tiles[0][y].piece;
   const x7Rook: ChessPiece | null = tiles[7][y].piece;
 
-  if (isValidRook(x0Rook) && tiles[3][y].piece == null) {
+  if (isValidRook(x0Rook) && allTheseTilesAreValid(tiles, 1, 3, y)) {
     console.log("king can caste left");
 
     king.validMoves.push(tiles[2][y]);
     king.canCastle = true;
   }
-  if (isValidRook(x7Rook) && tiles[5][y].piece == null) {
+  if (isValidRook(x7Rook) && allTheseTilesAreValid(tiles, 5, 6, y)) {
     console.log("king can caste right");
     king.validMoves.push(tiles[6][y]);
     king.canCastle = true;
@@ -115,4 +116,19 @@ function isValidRook(piece: ChessPiece | null) {
     return true;
   }
   return false;
+}
+
+function allTheseTilesAreValid(
+  tiles: Tile[][],
+  startX: number,
+  endX: number,
+  y: number
+) {
+  for (let x = startX; x <= endX; x++) {
+    const tile = tiles[x][y];
+    if (tile.isUnderAttack || tile.piece != null) {
+      return false;
+    }
+  }
+  return true;
 }
