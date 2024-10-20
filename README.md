@@ -88,3 +88,7 @@ I took a tiny pause from chess to do some data analasys. While living in Oslo th
 ## 09.09; I am distracted by Svelte
 
 For the past days, I have been distracted by Svelte, which I am learning while studying a subject. Unfortunately for my newfound love for the framework, I will need to finish chess before I cross the line where I absolutely don't want to touch it anymore.
+
+## 20.10; Finishing my summer project
+
+We are half-way into autumn. I want a job, and will therefore continue developing chess in another repository. This will contain a live server and multiplayer, making it so you can play with you best friend. This will also involve brutally dissecting my chess-baby into seperate front-end and back-end, with WebSocket connecting them. I had a great summer of working on this, and I look forward to the rest of my programming year <3
